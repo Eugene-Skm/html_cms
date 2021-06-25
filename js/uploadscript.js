@@ -20,7 +20,6 @@ dropZone.addEventListener('drop', function(e) {
 function previewFile(file) {/* FileReaderで読み込み、プレビュー画像を表示。 */
   var fr = new FileReader();
   fr.onload = function() {
-	  console.log("A")
     var img = document.createElement('img');
     img.setAttribute('src', fr.result);
     preview.innerHTML = '';
