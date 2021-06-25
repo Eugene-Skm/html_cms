@@ -15,12 +15,17 @@ if (is_uploaded_file($tempfile)) {
 
 function initialize_svgcode($fname){
 	$svg_json=svg_to_json($fname);
-	set_shapeid($svg_json);
+	$svg_array=json_to_array($svg_json);
+	
+	var_dump($svg_array);
+	$root=["ni"];
+	$tmpare="svg";
+	$id_seted_json=set_atribute_tag("id",$tmpare, $svg_array,$root);
+	echo("<pre>");
+	var_dump(json_encode( $id_seted_json , true ));
+	echo("</pre>");
 }
 
-function set_shapeid($svjsondata){
-	
-}
 
 
 ?>
