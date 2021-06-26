@@ -40,35 +40,43 @@ function set_atribute_tag($tag,&$parent,&$dataarray,$pointer){
 	$array_keys=array_keys($dataarray);
 	
 	
+	/*
+	
+	if($pointer!="null"){
+		while($array_keys[0]==$pointer){
+			array_shift($array_keys);
+		}
+	}
+	
+	
+	echo("<pre>");
+	var_dump($array_keys);
+	echo("</pre>");
+	*/
 	foreach($array_keys as $keys => $key){
-		//$array_keys_child=array_keys($dataarray[$key]);
 		//$roots[count($roots)-1]=$key;
 		if(is_array($dataarray[$key])){
 			//キーが数字でない場合 連想配列[0],[1]...避け
 			if(!is_int($key)){
-					if(array_key_exists($tag,$dataarray[$key])){
-						//$tagに該当する属性が発見された場合
-						list($elementname,$ele_count)=tag_judge($key,$parent);
-						$dataarray[$key][$tag]=$elementname."-".$GLOBALS["tag_count"][$ele_count];	
-					}elseif(!array_key_exists($tag,$dataarray[$key])){
-						var_dump($dataarray);
-						if(!array_key_exists(0,$dataarray[$key])){
-							//$tagの属性が無い場合
-							list($elementname,$ele_count)=tag_judge($key,$parent);
-							//先頭にあらたにタグ値を追加
-							array_unshift($dataarray[$key], $elementname."-".$GLOBALS["tag_count"][$ele_count]);
-
-							//先頭の要素のタグ値のキーを「0」から＄tag内容に変更
-							$a=array_keys($dataarray[$key]);
-							$a[0]=$tag;
-							$b=array_values($dataarray[$key]);
-							$dataarray[$key]=array_combine($a,$b);
-
-					}
-					echo("<pre>");
-					//var_dump($dataarray);
-					echo("</pre>");
-					}
+				if(array_key_exists($tag,$dataarray[$key])){
+					//$tagに該当する属性が発見された場合
+					list($elementname,$ele_count)=tag_judge($key,$parent);
+					$dataarray[$key][$tag]=$elementname."-".$GLOBALS["tag_count"][$ele_count];	
+				}elseif(!array_key_exists($tag,$dataarray[$key])){
+					//$tagの属性が無い場合
+					list($elementname,$ele_count)=tag_judge($key,$parent);
+					//先頭にあらたにタグ値を追加
+					array_unshift($dataarray[$key], $elementname."-".$GLOBALS["tag_count"][$ele_count]);
+					
+					//先頭の要素のタグ値のキーを「0」から＄tag内容に変更
+					$a=array_keys($dataarray[$key]);
+					$a[0]=$tag;
+					$b=array_values($dataarray[$key]);
+					$dataarray[$key]=array_combine($a,$b);
+				}
+				echo("<pre>");
+				//var_dump($dataarray);
+				echo("</pre>");
 			}else{
 				$flg=true;
 			}
@@ -120,7 +128,7 @@ function tag_judge($key1,$pare){
 		//それ以外の要素は親要素のキーがidに入る　rect>@attributesの場合＠attributesはrectなのでrect1
 		$nkey=$pare;
 	}
-	//var_dump($pare ." & ".$key1." = ".$nkey);
+	var_dump($pare ." & ".$key1." = ".$nkey);
 	//判定配列から位置検索
 	$place=array_search($nkey,$tag_info);
 	//タグの数を係数
