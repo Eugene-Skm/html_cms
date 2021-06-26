@@ -20,10 +20,10 @@ function initialize_svgcode($fname){
 	var_dump($svg_array);
 	$root=["ni"];
 	$tmpare="svg";
-	$id_seted_json=set_atribute_tag("id",$tmpare, $svg_array,$root);
-	echo("<pre>");
-	var_dump(json_encode( $id_seted_json , true ));
-	echo("</pre>");
+	$id_seted_json=set_atribute_tag("id",$tmpare, $svg_array,"null");
+	
+	var_dump(json_encode( $id_seted_json ,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES ));
+	
 }
 
 
