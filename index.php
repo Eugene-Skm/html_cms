@@ -18,4 +18,4 @@
 </form>
 <?php echo "こんにちは"; ?>
 </body>
-</html>
+</html> 
