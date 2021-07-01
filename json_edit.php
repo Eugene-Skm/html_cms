@@ -1,54 +1,98 @@
 <?php
-class JSONEDIT{
-    var $target_json;
-    var $assosiative_array;
-    var $targe_attributes;    //参照渡し出来るか
-    var $target_attributes_key;
-    
-    function jsonedit($jname){
-        $url = "./edited_json/".$jname;
-        $this->target_json = file_get_contents($url);
-        $this->assosiative_array= json_decode( $svgjsondata, true );
-        
+/**
+* 1$jsonedit = new JSONEDIT("ファイル名(拡張子付き)")
+* 2$jsonedit->get_attributes($id);
+*
+* if文を使う場合
+* 3if($jsonedit->tag_exist($tag)){
+*   jsonedit->val_change($value);
+* }else{
+*   jsonedit->tag_add($value);
+* }
+* 3if($jsonedit->tag_exist($tag)){
+*  jsonedit->tag_del();
+* }
+* if文を使わない場合
+* 3jsonedit->val_change($value, $tag); 変更1行で存在チェックと無い場合のタグ追加も可能
+* 3jsonedit->tag_del( $tag );
+* 
+* 三項演算子　今度試し
+* $jsonedit->tag_exist($tag) ? jsonedit->val_change($value) : jsonedit->tag_add($value)
+* $jsonedit->tag_exist($tag) ? jsonedit->tag_del()
+*/
+class JSONEDIT {
+    private $target_json;
+    private $assosiative_array;
+    private $target_attributes; //参照渡し出来るか
+    private $target_attributes_keys;
+    private $target_tag;
+
+    function jsonedit( $jname ) {
+        $url = "./edited_json/" . $jname;
+        $this->target_json = file_get_contents( $url );
+        $this->assosiative_array = json_decode( $svgjsondata, true );
+
     }
-    public function get_attributes($id){
-        //idに当たるアトリビュートキーデータをゲット（再起？）
+    public function get_attributes( $id ) {
         //各Attributes編集保存時に毎回呼び出される
         //返り値保存先は$target_attributes_key;
-        $this->targe_attributes = & $data[key];
-        $this->target_attributes_key = array_keys(& $data[key]);
-    }
-    public function tag_exist($tag){
-        //各Attributesにタグが存在するか確認
-        //各Attributes編集保存時、各詳細設定保存時に存在確認のため呼び出される
-    }
-    
-    
-    
-    function tag_edit(){
-        //再起
-        $targe_attributes= & $data[key];
-     
-    }
-    
-    
-    
-    
-    private function val_change(){
-        $target =  & $this->targe_attributes;
-       
-    }
-    private function tag_add(){
-        $target =  & $this->targe_attributes;
-    }
-    private function tag_del(){
-        $target =  & $this->targe_attributes;
+        $end_flg=false;
+        $arraydata = & $this->target_attributes;
+        $arraykeys = array_keys( $arraydata );
+
+        foreach ( $arraykeys as $keys => $key ) {
+            if ( is_array( $arraydata[ $key ] ) ) {
+                if ( $key === "@attributes" ) {                    
+                    if($arraydata['@attributes']['id']===$id){
+                        $this->target_attributes=& $arraydata['@attributes'];
+                        $this->target_attributes_keys=& array_keys( $arraydata['@attributes'] );
+                        $end_flg=true;
+                    }
+                }
+                if(!$end_flg){
+                    $this->tag_edit( $data[ $key ] );
+                    $end_flg=false;
+                }       
+            }
+        }
     }
     
+    private function tag_exist() {
+        $key=$this->target_tag; 
+        $target_keys = & $this->target_attributes_keys;
+        
+        return in_array($key, $target_keys);
+    }
+
     
-    public function close(){
+    public function val_change( $value, $tag ) {
+        $target = & $this->targe_attributes;
+        $this->target_tag=$tag;
+        if($this->tag_exist()){
+            $target[ $tag ] = $value;
+        }
+    }
+    public function tag_add( $value, $tag ) {
+        $target = & $this->targe_attributes;
+        $this->target_tag=$tag;
+        
+        $target[ $tag ] += array( $tag => $value );
+    }
+    
+    public function tag_del( $tag ) {
+        $target = & $this->targe_attributes;
+        $this->target_tag=$tag;
+        
+        if($this->tag_exist()){
+            unset($target[$tag]);
+        }
+    }
+
+    public function close() {
         
     }
 }
+
+
 
 ?>
