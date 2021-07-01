@@ -1,5 +1,5 @@
 <?php
-include( "./svg_editor.php" );
+include( "svg_initialize.php" );
 $tempfile="";
 $filename="";
 if(isset($_FILES[ 'file' ])){
