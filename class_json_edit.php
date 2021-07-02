@@ -16,7 +16,7 @@ class JSONEDIT {
     private $target_attributes_keys;
     private $target_tag;
 
-    function jsonedit( $jname ) {
+    function __construct( $jname ) {
         $url = "./edited_json/" . $jname;
         $this->target_json = file_get_contents( $url );
         $this->assosiative_array = json_decode( $svgjsondata, true );
