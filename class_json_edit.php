@@ -2,18 +2,7 @@
 /**
 * 1$jsonedit = new JSONEDIT("ファイル名(拡張子付き)")
 * 2$jsonedit->get_attributes($id);
-*
-* if文を使う場合
-* 3if($jsonedit->tag_exist($tag)){
-*   jsonedit->val_change($value);
-* }else{
-*   jsonedit->tag_add($value);
-* }
-* 3if($jsonedit->tag_exist($tag)){
-*  jsonedit->tag_del();
-* }
-* if文を使わない場合
-* 3jsonedit->val_change($value, $tag); 変更1行で存在チェックと無い場合のタグ追加も可能
+* 3jsonedit->val_change($value, $tag); 
 * 3jsonedit->tag_del( $tag );
 * 
 * 三項演算子　今度試し

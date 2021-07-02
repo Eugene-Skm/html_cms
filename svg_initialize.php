@@ -150,22 +150,14 @@ function json_to_svgstring( array & $data ) {
                     $Nowend = $AtTag;
                 } elseif ( un_void_check( $AtTag ) == "void" ) {
                     $svgdata .= "<" . $AtTag . " " . $Tagdata . "/>\r\n";
-                    //$Nowend="";
                 }
             }
             json_to_svgstring( $data[ $key ] );
         }
     }
     if ( $Nowend != "" ) {
-        /*if($Nowend=="svg"){
-                 $svgdata.="<".$Nowend."/>";
-                 $Nowend="";
-        }else{*/
         $svgdata .= "</" . $Nowend . ">\r\n";
         $Nowend = "";
-        //  }
-
-
     }
     return $svgdata;
 }
