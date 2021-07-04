@@ -31,6 +31,5 @@
     </aside>
     <footer>
     </footer>
-    
 </body>
 </html>
