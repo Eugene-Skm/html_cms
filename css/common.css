@@ -1,3 +1,39 @@
 @charset "utf-8";
 /* CSS Document */
+:root{
+    
+}
+body{
+   display: inline-block;
+    width: 100%;
+    margin: 0;
+    font-family: 'Yu Gothic UI','ヒラギノ角ゴシック','Hiragino Sans','Yu Gothic','Arial','メイリオ', 'Meiryo','Calibri','ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Narrow','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Avenir',sans-serif;
+}
 
+header{
+    display: block;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+}
+#topbar{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background-color: #844749;
+}
+#logo{
+    width: auto;
+    height: 100%;
+}
+img{
+    height: 100%;
+}
+main{
+    display: block;
+    width: 100%;
+    text-align: center;
+}

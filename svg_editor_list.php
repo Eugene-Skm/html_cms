@@ -10,19 +10,28 @@ $list = $db->select_listsvg();
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
+    <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+    <link href="css/list_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 </head>
 <body>
-<header> </header>
+<header>
+    <div id="topbar">
+        <div id="logo"><img src="img/toplogo.png" alt="Logo"/></div>
+    </div>
+</header>
 <main>
-    <div>
-        <?php foreach($list as $svg){ ?>
-        <div id="set"> <a href="./edit_page.php?name=<?php echo $svg['fname'] ;?>"></a>
-            <div id="image_cell"> <img src="original_svg/<?php echo $svg['fname'] ;?>" ></img> </div>
-            <div id="info_cell">
+    
+    <div id="list">
+        <?php $flg=0; foreach($list as $svg){  ?>
+        <div class="thumb_set"> <a href="./edit_page.php?name=<?php echo $svg['fname'] ;?>"></a>
+            <div class="image_cell"> <img src="original_svg/<?php echo $svg['fname'] ;?>" ></img> </div>
+            <div class="info_cell">
                 <p><?php echo $svg['title'] ;?></p>
                 <p><?php echo $svg['date'] ;?></p>
             </div>
         </div>
+            <?php $flg++;  ?>
+            <?php if($flg==4){ echo "<hr>"; $flg=0; }  ?>
         <?php } ?>
     </div>
 </main>
