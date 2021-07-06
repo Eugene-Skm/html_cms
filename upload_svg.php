@@ -1,6 +1,6 @@
 <?php
 require_once('./class_db_io.php');
-require_once( "svg_initialize.php" );
+require_once( "./svg_initialize.php" );
 
 $tempfile="";
 $filename="";
@@ -31,8 +31,8 @@ function initialize_svgcode( $fname ) {
     write_file($fname,json_encode($id_seted_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),"Ejson");
     
     $connect= new connect();
-    $sql="INSERT INTO `svg_info`(`fname`, `css`, `js`) VALUES (:fname,:css,:js) ";
-    $connect->inset_svg($sql, $fname, false, false);
+    
+    $connect->inset_svg( $fname, false, false);
 }
 
 function write_file($fname,$writedata,string $type){

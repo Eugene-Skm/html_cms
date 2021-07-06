@@ -137,7 +137,6 @@ function json_to_svgstring( array & $data ) {
                 $Attributes_key = array_keys( $thisdata );
 
                 $AtTag = strstr( $thisdata[ 'id' ], "-", true );
-                //var_dump($AtTag);
                 $Tagdata = "";
                 if ( $AtTag == "svg" ) {
                     $Tagdata .= "xmlns='http://www.w3.org/2000/svg' ";
@@ -178,7 +177,6 @@ function un_void_check( string $Tname ) {
     } else {
         $result = false;
     }
-    // var_dump($Tname."#".$result);
     return $result;
 }
 
