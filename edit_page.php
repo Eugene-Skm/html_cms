@@ -1,10 +1,17 @@
 <?php
-    
+    $fnm="";
+    $st="";
+    if(isset($_GET["name"])){
+        $fnm=$_GET["name"];
+        $st=$_GET["st"];
+    }
 ?>
 
 <!doctype html>
 <html>
 <head>
+    <script src="js/openup.js" ></script> 
+    <script> postSend("<?php echo $st ?>","<?php echo $fnm ?>"); </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Editor Page</title>
@@ -22,7 +29,7 @@
                 <?php  ?>
             </div>
             <div id="svg_view">
-                <?php  ?>
+               <img src="./tmp/<?php echo $fnm ?>.svg" alt="svg"/> 
             </div>
         </div>
         

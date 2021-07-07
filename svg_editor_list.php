@@ -23,7 +23,7 @@ $list = $db->select_listsvg();
     
     <div id="list">
         <?php $flg=0; foreach($list as $svg){  ?>
-        <div class="thumb_set"> <a href="./edit_page.php?name=<?php echo $svg['fname'] ;?>"></a>
+        <div class="thumb_set"><a href="./edit_page.php?name=<?php echo str_replace('.svg', '', $svg['fname'] ); ?>&st=<?php echo $svg['stat'] ?>"></a>
             <div class="image_cell"> <img src="original_svg/<?php echo $svg['fname'] ;?>" ></img> </div>
             <div class="info_cell">
                 <p><?php echo $svg['title'] ;?></p>
