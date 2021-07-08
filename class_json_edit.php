@@ -17,10 +17,10 @@ class JSONEDIT {
     private $target_tag;
 
     function __construct( $jname ) {
-        $url = "./edited_json/" . $jname;
+        $url = "./edited_svg_json/E_" . $jname;
         $this->target_json = file_get_contents( $url );
-        $this->assosiative_array = json_decode( $svgjsondata, true );
-
+        $this->assosiative_array = json_decode( $this->target_json, true );
+         $this->target_attributes=$this->assosiative_array;
     }
     public function get_attributes( $id ) {
         //各Attributes編集保存時に毎回呼び出される
@@ -39,11 +39,32 @@ class JSONEDIT {
                     }
                 }
                 if(!$end_flg){
-                    $this->tag_edit( $data[ $key ] );
+                    $this->target_attributes=& $arraydata[$key];
+                    $this->get_attributes( $id );
                     $end_flg=false;
                 }       
             }
         }
+    }
+    private $idlist=array();
+    public function get_allid() {
+        //各Attributes編集保存時に毎回呼び出される
+        //返り値保存先は$target_attributes_key;
+        $arraydata = & $this->target_attributes;
+        $arraykeys = array_keys( $arraydata );
+
+        foreach ( $arraykeys as $keys => $key ) {
+            if ( is_array( $arraydata[ $key ] ) ) {
+                if ( $key === "@attributes" ) {                    
+                    array_push($this->idlist,$arraydata[ $key ]["id"]); 
+                }
+                $this->target_attributes=& $arraydata[$key];
+                $this->get_allid();
+                        
+            }
+        }
+        
+        return $this->idlist;
     }
     
     private function tag_exist() {

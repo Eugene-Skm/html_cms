@@ -1,9 +1,16 @@
 <?php
+include('./class_json_edit.php');
 $fnm = "";
 $st = "";
+$svgjson;
 if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
+    
+    $jsonedit = new JSONEDIT($fnm.'.json');
+    $idlist=$jsonedit->get_allid();
+    sort($idlist);
+   
 }
 ?>
 
@@ -16,8 +23,10 @@ if ( isset( $_GET[ "name" ] ) ) {
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <link href="css/editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <script src="js/openup.js" ></script> 
-<script> postSend("<?php echo $st ?>","<?php echo $fnm ?>"); </script> 
 <script type="text/javascript" src="js/editor.js" defer></script>
+<script> 
+    postSend("<?php echo $st ?>","<?php echo $fnm ?>");
+</script> 
 </head>
 
 <body>
@@ -29,12 +38,15 @@ if ( isset( $_GET[ "name" ] ) ) {
 <main>
     <div id="editor_panel">
         <div id="property_panel">
-            <?php  ?>
+            <label for="ids">調整可能要素</label>
+            <select name="ids">
+                <?php foreach( $idlist as $id ){ ?>
+                <option value="<?php echo $id ?>"><?php echo strstr($id,"-",true)." - " . $id ?></option>
+                <?php } ?>
+            </select>
+            
         </div>
-        <div id="svg_view"> 
-        <div id="svg_wrapper"> 
-            <img src="./tmp/<?php echo $fnm ?>.svg" alt="svg" id="svgview"/> 
-        </div>
+        <div id="svg_view">
         </div>
     </div>
 </main>

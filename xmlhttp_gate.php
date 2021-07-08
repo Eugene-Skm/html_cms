@@ -12,7 +12,7 @@ if ( isset( $_GET[ "st" ] ) ) {
         $flg = copy( './original_svg/'.$fnm.'.svg', './tmp/'.$fnm.'.svg' );
         
     } else {
-        $flg = copy( './edited_svg/'.$fnm.'.svg', './tmp/'.$fnm.'.svg' );
+        $flg = copy( './edited_svg/E_'.$fnm.'.svg', './tmp/'.$fnm.'.svg' );
         
     }
     if ( $flg ) {
