@@ -7,12 +7,15 @@ function postSend(st,fnm) {
     request.responseType = 'text';
     request.addEventListener('load', function (response) {
       // JSONデータを受信した後の処理
-        _returnValues=response;
-        upd();
+        _returnValues=this.response;
+        upd(_returnValues);
     });
     request.send();
 }
-function upd(){
-        console.log("A");
-    document.getElementById("svgview").alt="setd";
+function upd(_returnValues){
+  var time=Math.random().toString();
+    
+    //document.getElementById("svg_view").innerHTML="<img src='./tmp/"+fn+".svg?"+time+"' alt='svg' id='svgview'/>"
+    document.getElementById("svg_view").innerHTML=_returnValues;
+    
 }

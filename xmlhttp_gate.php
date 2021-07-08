@@ -3,6 +3,7 @@
 $st = "";
 $st = "";
 $flg="";
+$result="";
 if ( isset( $_GET[ "st" ] ) ) {
     $st = $_GET[ "st" ];
     $fnm = $_GET[ "fnm" ];
@@ -12,9 +13,10 @@ if ( isset( $_GET[ "st" ] ) ) {
         
     } else {
         $flg = copy( './edited_svg/'.$fnm.'.svg', './tmp/'.$fnm.'.svg' );
+        
     }
     if ( $flg ) {
-            echo "succcess";
+            echo file_get_contents( './tmp/'.$fnm.'.svg' );
         } else {
             echo "failed";
         }

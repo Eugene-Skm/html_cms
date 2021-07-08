@@ -9,9 +9,10 @@ $list = $db->select_listsvg();
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
 <title>Untitled Document</title>
-    <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-    <link href="css/list_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+<link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+<link href="css/list_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -20,7 +21,6 @@ $list = $db->select_listsvg();
     </div>
 </header>
 <main>
-    
     <div id="list">
         <?php $flg=0; foreach($list as $svg){  ?>
         <div class="thumb_set"><a href="./edit_page.php?name=<?php echo str_replace('.svg', '', $svg['fname'] ); ?>&st=<?php echo $svg['stat'] ?>"></a>
@@ -30,8 +30,8 @@ $list = $db->select_listsvg();
                 <p><?php echo $svg['date'] ;?></p>
             </div>
         </div>
-            <?php $flg++;  ?>
-            <?php if($flg==4){ echo "<hr>"; $flg=0; }  ?>
+        <?php $flg++;  ?>
+        <?php if($flg==4){ echo "<hr>"; $flg=0; }  ?>
         <?php } ?>
     </div>
 </main>
