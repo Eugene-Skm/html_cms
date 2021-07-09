@@ -22,6 +22,7 @@ main{
     width: 20%;
     border-right: 1px solid #969696;
     box-shadow: 5px 0 4px -4px #A6A6A6;
+    padding: 10px;
 }
 #svg_view{
     display: inline;
@@ -32,4 +33,33 @@ main{
 #svg_view svg{
     display: inline-block;
     height: 100%;
+}
+.properties{
+    padding: 10px;
+}
+#parts_selecter{
+    display: block;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 70px;
+}
+.property{
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+}
+.tagset{
+    display: inline-flex;
+}
+.property_name{
+    flex-basis: 50%;
+}
+.property_val{
+    flex-basis: 50%;
+}
+.property input{
+    display: inline-block;
+    width: 80%;
+    margin: 0px 10px
+        
 }
