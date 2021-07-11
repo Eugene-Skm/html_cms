@@ -1,65 +1,114 @@
 @charset "utf-8";
 /* CSS Document */
-body{
+body {
     height: 100%;
     margin: 0;
 }
-main{
+main {
     height: 92%;
     margin: 0;
-    
 }
-#editor_panel{
+#editor_panel {
     position: relative;
     display: inline-flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
 }
-#property_panel{
-    display: inline-flex;
-    flex-direction: column;
-    width: 20%;
-    border-right: 1px solid #969696;
-    box-shadow: 5px 0 4px -4px #A6A6A6;
-    padding: 10px;
-}
-#svg_view{
+#svg_view {
     display: inline;
     width: 80%;
     text-align: center;
     padding: 20px;
 }
-#svg_view svg{
+#svg_view svg {
     display: inline-block;
     height: 100%;
 }
-.properties{
+#property_panel {
+    display: inline-flex;
+    flex-direction: column;
+    width: 20%;
+    border-right: 1px solid #969696;
+    box-shadow: 5px 0 4px -4px #A6A6A6;
+    padding-left: 10px;
+    margin: 0;
+}
+#properties {
     padding: 10px;
 }
-#parts_selecter{
+#parts_selecter {
     display: block;
     position: sticky;
     position: -webkit-sticky;
     top: 70px;
 }
-.property{
+
+.attribute {
     width: 100%;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
+    
+    transition: .5s;
+    height:auto;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
 }
-.tagset{
+.tagset {
     display: inline-flex;
+    flex-direction: row;
+    width: 100%;
 }
-.property_name{
-    flex-basis: 50%;
-}
-.property_val{
-    flex-basis: 50%;
-}
-.property input{
+.tagset label {
     display: inline-block;
-    width: 80%;
-    margin: 0px 10px
-        
+    flex-basis: 50%;
+    width: 100%;
+    margin: 0px 10px;
+}
+.tagset input {
+    display: inline-block;
+    flex-basis: 50%;
+    width: 100%;
+    margin: 0px 10px;
+}
+.effective:checked + .attribute {
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    visibility: hidden;
+}
+.key-check {
+    display: none;
+}
+.key-label {
+    background: #333;
+    color: #fff;
+    display: block;
+    margin-bottom: 1px;
+    padding: 10px;
+}
+.key-content {
+    border: 1px solid #333;
+    transition: .5s;
+    height:auto;
+    opacity: 1;
+    padding: 10px;
+    visibility: visible;
+}
+.key-check:checked + .key-label + .key-content {
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    visibility: hidden;
+}
+.key-check:checked + .key-label > .mountain{
+        transform: rotate(180deg);
+}
+.mountain{
+    display: inline-block;
+    border: 7px solid rgba(0,0,0,0);
+    border-top: 7px solid #fff;
+    transform: translate(0%, 10%);
+    transition: all ease 0.5s 10ms;
 }
