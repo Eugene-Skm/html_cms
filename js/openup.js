@@ -1,9 +1,9 @@
 // JavaScript Document
 
 var _returnValues;
-function postSend(st,fnm) {
+function postSend(fnm) {
     var request = new XMLHttpRequest();
-    request.open('GET', "./xmlhttp_gate.php?st="+st+"&fnm="+fnm , true);
+    request.open('GET', "./xmlhttp_gate.php?fnm="+fnm , true);
     request.responseType = 'text';
     request.addEventListener('load', function (response) {
       // JSONデータを受信した後の処理
@@ -14,10 +14,43 @@ function postSend(st,fnm) {
 }
 function upd(_returnValues){
   var time=Math.random().toString();
-    
-    //document.getElementById("svg_view").innerHTML="<img src='./tmp/"+fn+".svg?"+time+"' alt='svg' id='svgview'/>"
     document.getElementById("svg_view").innerHTML=_returnValues;
     
 }
 
 
+class Xmlgate{
+ 
+    constructor() {
+        this.PID = "";
+    }
+    
+ 
+    setMethodtype(processID) {
+        switch(processID){
+            case "initialize":
+                this.PID="ini";
+                break;
+            case "update":
+                this.PID="ini";
+               break;
+        }
+    }
+    
+    function mainmethod(st1,st2=null){
+        //get用 statement処理
+        var statement="";
+        if(this.PID=="ini"){
+            statement='st='+st1;
+        }else if(this.PID=="ini"){
+            
+        }
+        
+        //Xmlhttp 開始
+        
+        
+        
+        
+    }
+    
+}

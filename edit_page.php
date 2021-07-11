@@ -25,7 +25,7 @@ if ( isset( $_GET[ "name" ] ) ) {
 <script src="js/openup.js" ></script> 
 <script type="text/javascript" src="js/editor.js" defer></script> 
 <script> 
-    postSend("<?php echo $st ?>","<?php echo $fnm ?>");
+    postSend("<?php echo $fnm ?>");
 </script>
 </head>
 
