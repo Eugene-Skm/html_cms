@@ -22,11 +22,9 @@ if ( isset( $_GET[ "name" ] ) ) {
 <meta name="viewport" content="width=device-width">
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <link href="css/editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-<script src="js/openup.js" ></script> 
+<script src="js/openup.js"></script> 
 <script type="text/javascript" src="js/editor.js" defer></script> 
-<script> 
-    postSend("<?php echo $fnm ?>");
-</script>
+
 </head>
 
 <body>

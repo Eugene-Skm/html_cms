@@ -54,7 +54,8 @@ function write_file($fname,$writedata,string $type){
     ini_set('display_errors', 0);
     file_put_contents($fpath[$p].$fname, $writedata);
     ini_set('display_errors', 1);
-    
+    ob_start();
+        
 }
 
 ?>
