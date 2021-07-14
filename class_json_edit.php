@@ -1,4 +1,5 @@
 <?php
+include("./svg_initialize.php");
 /**
 * 1$jsonedit = new JSONEDIT("ファイル名(拡張子付き)")
 * 2$jsonedit->get_attributes($id);
@@ -13,8 +14,9 @@ class JSONEDIT {
     private $target_json;
     private $assosiative_array;
     private $target_attributes; //参照渡し出来るか
-    private $target_attributes_keys;
     private $target_tag;
+    private $target;
+    private $target_keys;
     private $tname;
 
     function __construct( $jname ) {
@@ -24,14 +26,11 @@ class JSONEDIT {
         $this->assosiative_array = json_decode( $this->target_json, true );
          $this->target_attributes=& $this->assosiative_array;
     }
-    public function get_attributes( $id, & $ef=null) {
+    public function get_attributes( $id ) {
         //各Attributes編集保存時に毎回呼び出される
         //返り値保存先は$target_attributes_key;
-        if($ef!=null){
-            $end_flg=& $ef;
-        }else{
+
             $end_flg=false;    
-        }
         
         $arraydata = & $this->target_attributes;
         $arraykeys = array_keys( $arraydata );
@@ -40,17 +39,15 @@ class JSONEDIT {
             if ( is_array( $arraydata[ $key ] ) ) {
                 if ( $key === "@attributes" ) {                    
                     if($arraydata['@attributes']['id']==$id){
-                        var_dump($arraydata['@attributes']);
-                        $this->target_attributes=& $arraydata['@attributes'];
-                        $this->target_attributes_keys= array_keys( $arraydata['@attributes'] );
+                        //var_dump($id);
+                        $this->target=& $arraydata['@attributes'];
+                        $this->target_keys= array_keys( $arraydata['@attributes'] );
                         $end_flg=true;
-                        var_dump($end_flg);
                     }
                 }
                 if($end_flg===false){
-                    var_dump($end_flg);
                     $this->target_attributes=& $arraydata[$key];
-                    $this->get_attributes( $id,$end_flg );
+                    $this->get_attributes( $id );
                 }       
             }
         }
@@ -76,45 +73,71 @@ class JSONEDIT {
         return $this->idlist;
     }
     
+    
     private function tag_exist() {
-        $key=$this->target_tag; 
-        $target_keys = & $this->target_attributes_keys;
-        
-        return in_array($key, $target_keys);
+       /* $key=$this->target_tag; 
+        $target_keys = & $this->target_keys;*/
+        return in_array($this->target_tag, $this->target_keys);
     }
 
+    public function get_tag() {
+        return $this->target;
+    }
     
     public function val_change( $value, $tag ) {
-        $target = & $this->target_attributes;
-        var_dump($target );
+        if($tag=="fill"||$tag=="stroke"){
+            if($value!="none"){
+                $value="#".$value;
+            }
+        }
+        $target = & $this->target;
         $this->target_tag=$tag;
         if($this->tag_exist()){
             $target[ $tag ] = $value;
         }else{
             $this->tag_add($value);
         }
-       //var_dump($this->assosiative_array);
-        
-        
-             
+        $result=$this->update_json();
+       //var_dump("rr");
+        return $result;
+       // var_dump("rr1");
     }
-    public function tag_add($value) {
-        $target = & $this->target_attributes;
+    private function tag_add($value) {
+        $target = & $this->target;
         $tag=$this->target_tag;
         $target += array( $tag => $value );
     }
     
     public function tag_del( $tag ) {
-        $target = & $this->targe_attributes;
+        $target = & $this->target;
         $this->target_tag=$tag;
         
         if($this->tag_exist()){
             unset($target[$tag]);
         }
     }
+    
+    private function update_json(){
+        //var_dump("CC");
+        $fname=strstr($this->tname,".",true);
+        file_put_contents("./tmp/".$fname.".json", json_encode($this->assosiative_array));
+        //var_dump("CCX");
+        //json_to_svgstring(json_decode($this->assosiative_array));
+        ini_set('display_errors', 0);
+        file_put_contents("./tmp/".$fname.".svg", json_to_svgstring($this->assosiative_array));
+        ini_set('display_errors', 1);
+        
+        //var_dump("CCaS");
+        return true;
+    }
 
     public function close() {
-        
+        $fname=strstr($this->tname,".",true);
+        copy( './tmp/' . $fname . '.json', './edited_svg_json/E_' . $fname . '.json' );
+        copy( './tmp/' . $fname . '.svg', './edited_svg/E_' . $fname . '.svg' );
+        unlink('./tmp/' . $fname . '.svg');
+        unlink('./tmp/' . $fname . '.json');
+        return true;
     }
 }
 

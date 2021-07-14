@@ -6,6 +6,8 @@ $svgjson;
 if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
+    $flg = copy( './edited_svg_json/E_' . $fnm . '.json', './tmp/' . $fnm . '.json' );
+    $flg = copy( './edited_svg/E_' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
 
     $jsonedit = new JSONEDIT( $fnm . '.json' );
     $idlist = $jsonedit->get_allid();
@@ -22,8 +24,9 @@ if ( isset( $_GET[ "name" ] ) ) {
 <meta name="viewport" content="width=device-width">
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <link href="css/editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-<script src="js/openup.js"></script> 
+<script type="text/javascript" src="js/openup.js" ></script> 
 <script type="text/javascript" src="js/editor.js" defer></script> 
+
 
 </head>
 
@@ -48,10 +51,10 @@ if ( isset( $_GET[ "name" ] ) ) {
             <div id="properties">
                 <!---------ひとまとまり---------->
                 <input id="key-check3" class="key-check" type="checkbox">
-                <label class="key-label" for="key-check3"><div class="mountain"></div>要素状態</label>
+                <label class="key-label " for="key-check3"><div class="mountain"></div>要素状態</label>
                 <div class="key-content">
                     <label class="property_name" for="effective1"> 非表示</label>
-                    <input id="effective1" class="effective" type="checkbox" onchange="update(this)"/>
+                    <input id="display" class="effective property_val" type="checkbox" onchange="update(this)"/>
                     <div class="attribute">
                         <div class="tagset">
                             <label class="property_name" for="stroke-opacity">全体透明度</label>
@@ -64,7 +67,7 @@ if ( isset( $_GET[ "name" ] ) ) {
                 <label class="key-label" for="key-check1"><div class="mountain"></div>塗り</label>
                 <div class="key-content">
                     <label class="property_name" for="effective3"> 無し</label>
-                    <input class="effective" id="effective3"  type="checkbox" onchange="update(this)"/>
+                    <input class="effective property_val" id="fill-effective"  type="checkbox" onchange="update(this)"/>
                     <div class="attribute">
                     <div class="tagset">
                             <label class="property_name" for="fill">色</label>
@@ -81,7 +84,7 @@ if ( isset( $_GET[ "name" ] ) ) {
                 <label class="key-label" for="key-check2"><div class="mountain"></div>枠</label>
                 <div class="key-content">
                     <label class="property_name" for="effective2"> 無し</label>
-                    <input id="effective2" class="effective keyvals" type="checkbox" onchange="update(this)"/>
+                    <input id="stroke-effective" class="effective property_val" type="checkbox" onchange="update(this)"/>
                     <div class="attribute">
                         <div class="tagset">
                             <label class="property_name" for="stroke">枠線色</label>
@@ -103,6 +106,9 @@ if ( isset( $_GET[ "name" ] ) ) {
             </div>
         </div>
         <div id="svg_view"> </div>
+        <div id="functional_Buttons">
+            <button id="save" style='display: inline-block; width:"100px";' onClick="xmlhttp_close()"><img src="img/save.svg" width="50px"></button>
+        </div>
     </div>
 </main>
 <aside> </aside>

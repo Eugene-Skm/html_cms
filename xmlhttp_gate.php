@@ -1,41 +1,52 @@
 <?php
 //header("Content-Type: text/javascript; charset=utf-8");
-include("./class_json_edit.php");
+include( "./class_json_edit.php" );
+ini_set('display_errors',1);
 $st = "";
-$flg="";
-$tag="";
-$val="";
-$result="";
+$flg = "";
+$tag = "";
+$val = "";
+$id = "";
+$result = "";
 if ( isset( $_GET[ "st" ] ) ) {
-    
     $st = $_GET[ "st" ];
     $fnm = $_GET[ "fnm" ];
-    if($st=="upd"){
+    if ( $st == "upd" ) {
+        $id = $_GET[ "id" ];
         $tag = $_GET[ "tag" ];
-        $val = $_GET[ "val" ];    
-        $id = $_GET[ "id" ];    
+        $val = $_GET[ "val" ];
+    } elseif( $st == "ged" ) {
+        $id = $_GET[ "id" ];
     }
-    
-    
-    file_put_contents("./logfile.txt", $st . PHP_EOL, FILE_APPEND);
-    if($st=="ini"){
-        
-       file_put_contents("./logfile.txt", "value" . PHP_EOL, FILE_APPEND);
-       $flg= copy( './edited_svg_json/E_'.$fnm.'.json', './tmp/'.$fnm.'.json' );
-    }elseif($st=="upd"){
-        file_put_contents("./logfile.txt", "upd" . PHP_EOL, FILE_APPEND);
-        $jsonedit = new JSONEDIT($fnm.'.json');
-        $jsonedit->get_attributes($id);
-        $jsonedit->val_change($val, $tag);
+
+    $jsonedit = new JSONEDIT( $fnm . '.json' );
+    $jsonedit->get_attributes( $id );
+
+    if ( $st == "ini" ) {
+       /* $flg = copy( './edited_svg_json/E_' . $fnm . '.json', './tmp/' . $fnm . '.json' );
+        $flg = copy( './edited_svg/E_' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );*/
         $flg=true;
+    } elseif ( $st == "upd" ) {
+        $flg=$jsonedit->val_change( $val, $tag );
+        
+    } elseif ( $st == "ged" ) {
+        $tags = $jsonedit->get_tag();
+        $flg = true;
+    }elseif( $st=="cls" ){
+        $flg=$jsonedit->close();
     }
-       
     if ( $flg ) {
-        var_dump("A");
-            echo file_get_contents( './tmp/'.$fnm.'.svg' );
-        } else {
-            echo "failed";
+        if($st=="ged"){
+            //echo $st;
+            echo json_encode($tags, JSON_PRETTY_PRINT| JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        }else{
+            //echo $st;
+            echo  file_get_contents( './tmp/' . $fnm . '.svg' );
         }
+        
+    } else {
+        echo "failed";
+    }
 }
 
 ?>
