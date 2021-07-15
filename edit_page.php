@@ -6,6 +6,7 @@ $svgjson;
 if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
+    
     $flg = copy( './edited_svg_json/E_' . $fnm . '.json', './tmp/' . $fnm . '.json' );
     $flg = copy( './edited_svg/E_' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
 
@@ -48,7 +49,8 @@ if ( isset( $_GET[ "name" ] ) ) {
                     <?php } ?>
                 </select>
             </div>
-            <div id="properties">
+            <form id="properties">
+            <div id="">
                 <!---------ひとまとまり---------->
                 <input id="key-check3" class="key-check" type="checkbox">
                 <label class="key-label " for="key-check3"><div class="mountain"></div>要素状態</label>
@@ -91,6 +93,10 @@ if ( isset( $_GET[ "name" ] ) ) {
                             <input class="property_val" id="stroke" type="color" onchange="update(this)"/>
                         </div>
                         <div class="tagset">
+                            <label class="property_name" for="stroke-width">太さ</label>
+                            <input class="property_val" id="stroke-width" type="number" min="0" max="100" step="1" value="1" onchange="update(this)">
+                        </div>
+                        <div class="tagset">
                             <label class="property_name" for="stroke-opacity">透明度</label>
                             <input class="property_val" id="stroke-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
                         </div>
@@ -104,6 +110,7 @@ if ( isset( $_GET[ "name" ] ) ) {
                 </div>
                 <!---------ひとまとまり---------->
             </div>
+                </form>
         </div>
         <div id="svg_view"> </div>
         <div id="functional_Buttons">

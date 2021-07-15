@@ -1,5 +1,4 @@
 <?php
-//header("Content-Type: text/javascript; charset=utf-8");
 include( "./class_json_edit.php" );
 ini_set('display_errors',1);
 $st = "";

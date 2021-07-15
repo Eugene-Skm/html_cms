@@ -20,14 +20,18 @@ function setTagdata(_returnValue) {
                 searchtag=key+"-effective"
             }
         }
-            
-        console.log(searchtag+":"+key+":"+idlist.includes(searchtag))
-        if(idlist.includes(searchtag)){
-            document.getElementById(searchtag).value=_returnValue[key];
-        }
         
+        if(idlist.includes(searchtag)){
+            
+            if(searchtag.includes("-effective")){
+                document.getElementById(searchtag).checked=true;    
+            }else if(searchtag=="display"&&_returnValue[searchtag]=="none"){
+                document.getElementById(searchtag).checked=true;    
+            }else{
+                document.getElementById(searchtag).value=_returnValue[key];
+            }
+        }
     }
-    
 }
 
 function upd(_returnValues) {
@@ -67,8 +71,6 @@ class Xmlgate {
                 this.PID = "cls";
                 break;
         }
-
-
     }
 
     mainmethod(st1, st2) {

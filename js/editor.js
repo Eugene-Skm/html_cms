@@ -32,6 +32,7 @@ partsselector.addEventListener('change', function (e) {
     var sel= document.getElementById("partsselector") ;
     var idx=sel.selectedIndex;
     var keyvalue=sel.options[idx].value;
+    document.getElementById("properties").reset();
     pullup.setid(keyvalue);
     xmlhttp_pulldata(keyvalue);
 }, false);
@@ -41,11 +42,15 @@ function update(obj) {
         console.log(obj);
     var id=obj.id;
     var keyvalue=obj.value;
-    if(obj.id.includes("-effective")){
+    if(obj.id.includes("-effective")||obj.id=="display"){
         if(document.getElementById(id).checked==true){
             keyvalue="none";
         }else{
-            keyvalue=document.getElementById(id.replace("-effective","")).value;
+            if(obj.id!="display"){
+                    keyvalue=document.getElementById(id.replace("-effective","")).value;
+                }else{
+                    keyvalue="inline";
+                }
         }
         
     }
@@ -60,12 +65,9 @@ function update(obj) {
 function xmlhttp_pulldata(id){
     if(id==null){
         pullup.setMethodtype("ini");
-        console.log("B");
     }else{
         pullup.setMethodtype("geteach"); 
-        console.log("X");
     }
-    
     pullup.mainmethod(id);
 }
 
