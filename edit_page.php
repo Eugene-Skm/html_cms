@@ -106,7 +106,7 @@ if ( isset( $_GET[ "name" ] ) ) {
                 <input id="key-check4" class="key-check" type="checkbox">
                 <label class="key-label" for="key-check4">クリックで開く4</label>
                 <div class="key-content">
-                    <p>hello.world4!</p>
+                    <p>hello world4!</p>
                 </div>
                 <!---------ひとまとまり---------->
             </div>

@@ -4,16 +4,13 @@ var _returnValues;
 
 function setTagdata(_returnValue) {
     _returnValue=JSON.parse(_returnValue);
-    console.log(_returnValue);
     var elemelist=document.getElementsByClassName("property_val");
     var idlist=[];
-    var searchtag="";var tag=""
+    var searchtag="";
     for(var eleme of elemelist ){
         idlist.push(eleme.id);
     }
-    console.log(idlist);
     for(const key in _returnValue ){
-        console.log(key);
         searchtag=key;
         if(key=="fill"||key=="stroke"){
             if(_returnValue[key]=="none"){
@@ -35,7 +32,6 @@ function setTagdata(_returnValue) {
 }
 
 function upd(_returnValues) {
-    var time = Math.random().toString();
     document.getElementById("svg_view").innerHTML = _returnValues;
 }
 function savechecked(){
@@ -79,7 +75,6 @@ class Xmlgate {
             this.statement = 'st=' + this.PID + "&fnm=" + this.fn;
         } else if (this.PID == "upd") {
             this.statement = 'st=' + this.PID + "&fnm=" + this.fn+ "&id=" + this.id + "&tag=" + st1 + "&val="+ st2;
-            console.log(st2+"ggg")
         }else if (this.PID == "ged") {
             this.statement = 'st=' + this.PID + "&fnm=" + this.fn+"&id="+st1;
         }
@@ -87,7 +82,6 @@ class Xmlgate {
 
         var request = new XMLHttpRequest();
         request.open('GET', "./xmlhttp_gate.php?" + this.statement, true);
-        console.log("./xmlhttp_gate.php?" + this.statement);
         request.responseType = '';
         request.addEventListener('load', function (response) {
             // JSONデータを受信した後の処理
