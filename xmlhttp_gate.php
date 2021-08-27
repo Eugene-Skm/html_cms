@@ -19,27 +19,24 @@ if ( isset( $_GET[ "st" ] ) ) {
     }
 
     $jsonedit = new JSONEDIT( $fnm . '.json' );
-    $jsonedit->get_attributes( $id );
+    $jsonedit -> get_attributes( $id );
 
     if ( $st == "ini" ) {
-       /* $flg = copy( './edited_svg_json/E_' . $fnm . '.json', './tmp/' . $fnm . '.json' );
-        $flg = copy( './edited_svg/E_' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );*/
         $flg=true;
     } elseif ( $st == "upd" ) {
-        $flg=$jsonedit->val_change( $val, $tag );
-        
+        $flg = $jsonedit -> val_change( $val, $tag );
     } elseif ( $st == "ged" ) {
-        $tags = $jsonedit->get_tag();
+        $tags = $jsonedit -> get_tag();
         $flg = true;
-    }elseif( $st=="cls" ){
-        $flg=$jsonedit->close();
+    }elseif( $st == "cls" ){
+        $jsonedit -> close();
     }
+    usleep(10);
     if ( $flg ) {
+        
         if($st=="ged"){
-            //echo $st;
             echo json_encode($tags, JSON_PRETTY_PRINT| JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }else{
-            //echo $st;
             echo  file_get_contents( './tmp/' . $fnm . '.svg' );
         }
         

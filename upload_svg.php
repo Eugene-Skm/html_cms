@@ -31,7 +31,6 @@ function initialize_svgcode( $fname ) {
     write_file($fname,json_encode($id_seted_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),"Ejson");
     
     $connect= new connect();
-    
     $connect->inset_svg( $fname, false, false);
 }
 

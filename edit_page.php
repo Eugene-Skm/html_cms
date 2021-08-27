@@ -6,7 +6,7 @@ $svgjson;
 if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
-    
+
     $flg = copy( './edited_svg_json/E_' . $fnm . '.json', './tmp/' . $fnm . '.json' );
     $flg = copy( './edited_svg/E_' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
 
@@ -26,9 +26,7 @@ if ( isset( $_GET[ "name" ] ) ) {
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <link href="css/editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <script type="text/javascript" src="js/openup.js" ></script> 
-<script type="text/javascript" src="js/editor.js" defer></script> 
-
-
+<script type="text/javascript" src="js/editor.js" defer></script>
 </head>
 
 <body>
@@ -50,67 +48,76 @@ if ( isset( $_GET[ "name" ] ) ) {
                 </select>
             </div>
             <form id="properties">
-            <div id="">
-                <!---------ひとまとまり---------->
-                <input id="key-check3" class="key-check" type="checkbox">
-                <label class="key-label " for="key-check3"><div class="mountain"></div>要素状態</label>
-                <div class="key-content">
-                    <label class="property_name" for="effective1"> 非表示</label>
-                    <input id="display" class="effective property_val" type="checkbox" onchange="update(this)"/>
-                    <div class="attribute">
-                        <div class="tagset">
-                            <label class="property_name" for="stroke-opacity">全体透明度</label>
-                            <input class="property_val" id="stroke-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
+                <div id=""> 
+                    <!---------ひとまとまり---------->
+                    <input id="key-check3" class="key-check" type="checkbox">
+                    <label class="key-label " for="key-check3">
+                    <div class="mountain"></div>
+                    要素状態
+                    </label>
+                    <div class="key-content">
+                        <label class="property_name" for="effective1"> 非表示</label>
+                        <input id="display" class="effective property_val" type="checkbox" onchange="update(this)"/>
+                        <div class="attribute">
+                            <div class="tagset">
+                                <label class="property_name" for="stroke-opacity">全体透明度</label>
+                                <input class="property_val" id="stroke-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!---------ひとまとまり---------->
-                <input id="key-check1" class="key-check" type="checkbox">
-                <label class="key-label" for="key-check1"><div class="mountain"></div>塗り</label>
-                <div class="key-content">
-                    <label class="property_name" for="effective3"> 無し</label>
-                    <input class="effective property_val" id="fill-effective"  type="checkbox" onchange="update(this)"/>
-                    <div class="attribute">
-                    <div class="tagset">
-                            <label class="property_name" for="fill">色</label>
-                            <input class="property_val" id="fill" type="color" onchange="update(this)"/>
-                        </div>
-                        <div class="tagset">
-                            <label class="property_name" for="fill-opacity">透明度</label>
-                            <input class="property_val" id="fill-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
-                        </div>
-                        </div>
-                </div>
-                <!---------ひとまとまり---------->
-                <input id="key-check2" class="key-check" type="checkbox">
-                <label class="key-label" for="key-check2"><div class="mountain"></div>枠</label>
-                <div class="key-content">
-                    <label class="property_name" for="effective2"> 無し</label>
-                    <input id="stroke-effective" class="effective property_val" type="checkbox" onchange="update(this)"/>
-                    <div class="attribute">
-                        <div class="tagset">
-                            <label class="property_name" for="stroke">枠線色</label>
-                            <input class="property_val" id="stroke" type="color" onchange="update(this)"/>
-                        </div>
-                        <div class="tagset">
-                            <label class="property_name" for="stroke-width">太さ</label>
-                            <input class="property_val" id="stroke-width" type="number" min="0" max="100" step="1" value="1" onchange="update(this)">
-                        </div>
-                        <div class="tagset">
-                            <label class="property_name" for="stroke-opacity">透明度</label>
-                            <input class="property_val" id="stroke-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
+                    <!---------ひとまとまり---------->
+                    <input id="key-check1" class="key-check" type="checkbox">
+                    <label class="key-label" for="key-check1">
+                    <div class="mountain"></div>
+                    塗り
+                    </label>
+                    <div class="key-content">
+                        <label class="property_name" for="effective3"> 無し</label>
+                        <input class="effective property_val" id="fill-effective"  type="checkbox" onchange="update(this)"/>
+                        <div class="attribute">
+                            <div class="tagset">
+                                <label class="property_name" for="fill">色</label>
+                                <input class="property_val" id="fill" type="color" onchange="update(this)"/>
+                            </div>
+                            <div class="tagset">
+                                <label class="property_name" for="fill-opacity">透明度</label>
+                                <input class="property_val" id="fill-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
+                            </div>
                         </div>
                     </div>
+                    <!---------ひとまとまり---------->
+                    <input id="key-check2" class="key-check" type="checkbox">
+                    <label class="key-label" for="key-check2">
+                    <div class="mountain"></div>
+                    枠
+                    </label>
+                    <div class="key-content">
+                        <label class="property_name" for="effective2"> 無し</label>
+                        <input id="stroke-effective" class="effective property_val" type="checkbox" onchange="update(this)"/>
+                        <div class="attribute">
+                            <div class="tagset">
+                                <label class="property_name" for="stroke">枠線色</label>
+                                <input class="property_val" id="stroke" type="color" onchange="update(this)"/>
+                            </div>
+                            <div class="tagset">
+                                <label class="property_name" for="stroke-width">太さ</label>
+                                <input class="property_val" id="stroke-width" type="number" min="0" max="100" step="1" value="1" onchange="update(this)">
+                            </div>
+                            <div class="tagset">
+                                <label class="property_name" for="stroke-opacity">透明度</label>
+                                <input class="property_val" id="stroke-opacity" type="range" min="0" max="1" step="0.01" value="1" onchange="update(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <!---------ひとまとまり---------->
+                    <input id="key-check4" class="key-check" type="checkbox">
+                    <label class="key-label" for="key-check4">クリックで開く4</label>
+                    <div class="key-content">
+                        <p>hello world4!</p>
+                    </div>
+                    <!---------ひとまとまり----------> 
                 </div>
-                <!---------ひとまとまり---------->
-                <input id="key-check4" class="key-check" type="checkbox">
-                <label class="key-label" for="key-check4">クリックで開く4</label>
-                <div class="key-content">
-                    <p>hello world4!</p>
-                </div>
-                <!---------ひとまとまり---------->
-            </div>
-                </form>
+            </form>
         </div>
         <div id="svg_view"> </div>
         <div id="functional_Buttons">
