@@ -68,7 +68,7 @@ class Xmlgate {
                 break;
         }
     }
-
+    
     mainmethod(st1, st2) {
         //get用 statement処理
         if (this.PID == "ini"||this.PID == "cls") {

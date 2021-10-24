@@ -1,13 +1,26 @@
-#list{
+.list{
     display: inline-block;
     width: 900px;
+}
+hr[class="null"]{
+    background-color: #E1E1E1;
+    border: none;
+    margin: 20px;
+    width: 100%;
+    height: 0px;
+}
+.list hr{
+    background-color: #E1E1E1;
+    border: none;    
+    height: 2px;
+    margin: 2px;
 }
 .thumb_set{
     position: relative;
     display: inline-flex;
     flex-flow: column;
-    width:  200px;
-    height: 250px;
+    width:  125px;
+    height: auto;
     margin: 5px;
     padding: 5px;
     text-align: center;
@@ -21,9 +34,9 @@
 }
 .image_cell{
     display: block;
-    height: 190px;
-    width: 190px;
-    margin: 4px;
+    height: 90px;
+    width: 90px;
+    margin: 4px auto;
     border-radius: 5px;
     border: 1px solid #988989;
     background-color: #F5F2F2;
@@ -35,7 +48,7 @@
 }
 .info_cell{
     display: block;
-    height: 50px;
+    height: 24px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -43,8 +56,24 @@
     display: block;
     margin: 1px;
     line-height: 18px;
+    font-size: 10px;
 }
-#list hr{
-    border: solid 1px #CCCCCC;
-    margin: 15px;
+.act_butts{
+    cursor: default;
+}
+.act_butts .vertical{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.act_butts button{
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    margin: 1px;
+    z-index: 99;
+}
+
+.act_butts .vertical button{
+    width: 50px;
 }

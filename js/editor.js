@@ -4,7 +4,18 @@ var pullup=new Xmlgate();
 
 pullup.setfile(getFname());
 xmlhttp_pulldata();
-console.log();
+
+history.pushState(null, null, null);
+window.addEventListener("popstate", function (e) {
+ 
+    history.pushState(null, null, null);
+    return;
+ 
+});
+
+
+
+
 function getFname(){
     var queryString = window.location.search;
     var queryObject = new Object();
@@ -79,5 +90,5 @@ function xmlhttp_update(tag,value){
 function xmlhttp_close(){
     pullup.setMethodtype("cls");
     pullup.mainmethod();
-    window.location.href = './svg_editor_list.php';
+    window.location.href = './index.php';
 }

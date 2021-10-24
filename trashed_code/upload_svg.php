@@ -1,6 +1,6 @@
 <?php
-require_once('./class_db_io.php');
-require_once( "./svg_initialize.php" );
+require_once('class_db_io.php');
+require_once( "../svg_initialize.php" );
 
 $tempfile="";
 $filename="";
@@ -20,7 +20,7 @@ if ( is_uploaded_file( $tempfile ) ) {
 
 function initialize_svgcode( $fname ) {
     $svg_json = svg_to_json( $fname );
-    write_file($fname,$svg_json,"Ojson");
+    //write_file($fname,$svg_json,"Ojson");
     
     $svg_array = json_to_array( $svg_json );
     $root = [ "ni" ];
@@ -53,8 +53,7 @@ function write_file($fname,$writedata,string $type){
     ini_set('display_errors', 0);
     file_put_contents($fpath[$p].$fname, $writedata);
     ini_set('display_errors', 1);
-    ob_start();
-        
+    ob_start();  
 }
 
 ?>

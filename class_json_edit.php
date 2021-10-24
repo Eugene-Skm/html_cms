@@ -20,8 +20,9 @@ class JSONEDIT {
     private $tname;
 
     function __construct( $jname ) {
-        $this->tname=$jname;
-        $url = "./tmp/" . $jname;
+        
+        $this->tname=$jname . '.json';
+        $url = "./tmp/" . $this->tname;
         $this->target_json = file_get_contents( $url );
         $this->assosiative_array = json_decode( $this->target_json, true );
          $this->target_attributes=& $this->assosiative_array;
@@ -98,9 +99,7 @@ class JSONEDIT {
             $this->tag_add($value);
         }
         $result=$this->update_json();
-       //var_dump("rr");
         return $result;
-       // var_dump("rr1");
     }
     private function tag_add($value) {
         $target = & $this->target;
@@ -121,20 +120,18 @@ class JSONEDIT {
         //var_dump("CC");
         $fname=strstr($this->tname,".",true);
         file_put_contents("./tmp/".$fname.".json", json_encode($this->assosiative_array));
-        //var_dump("CCX");
-        //json_to_svgstring(json_decode($this->assosiative_array));
         ini_set('display_errors', 0);
         file_put_contents("./tmp/".$fname.".svg", json_to_svgstring($this->assosiative_array));
         ini_set('display_errors', 1);
         
-        //var_dump("CCaS");
+        
+        
         return true;
     }
 
     public function close() {
         $fname=strstr($this->tname,".",true);
-        copy( './tmp/' . $fname . '.json', './edited_svg_json/E_' . $fname . '.json' );
-        copy( './tmp/' . $fname . '.svg', './edited_svg/E_' . $fname . '.svg' );
+        copy( './tmp/' . $fname . '.svg', './testSVG/' . $fname . '.svg' );
         unlink('./tmp/' . $fname . '.svg');
         unlink('./tmp/' . $fname . '.json');
         return true;

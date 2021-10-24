@@ -18,7 +18,7 @@ if ( isset( $_GET[ "st" ] ) ) {
         $id = $_GET[ "id" ];
     }
 
-    $jsonedit = new JSONEDIT( $fnm . '.json' );
+    $jsonedit = new JSONEDIT( $fnm  );
     $jsonedit -> get_attributes( $id );
 
     if ( $st == "ini" ) {

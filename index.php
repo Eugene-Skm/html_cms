@@ -1,8 +1,11 @@
 <?php
-require_once( 'class_db_io.php' );
+//require_once( 'trashed_code/class_db_io.php' );
 
-$db = new connect();
-$list = $db->select_listsvg();
+//$db = new connect();
+//$list = $db->select_listsvg();
+$svglist = array_filter(glob("./testSVG/*.svg"),'is_file');
+$imglist = array_filter(glob("./img/*"),'is_file');
+
 ?>
 
 <!doctype html>
@@ -21,17 +24,38 @@ $list = $db->select_listsvg();
     </div>
 </header>
 <main>
-    <div id="list">
-        <?php $flg=0; foreach($list as $svg){  ?>
-        <div class="thumb_set"><a href="./edit_page.php?name=<?php echo str_replace('.svg', '', $svg['fname'] ); ?>&st=<?php echo $svg['stat'] ?>"></a>
-            <div class="image_cell"> <img src="edited_svg/E_<?php echo $svg['fname'] ;?>?<?php echo date("YmdHis");?>" ></img> </div>
+    <h2>フォルダ:SVG</h2>
+    <div class="list">
+        <?php $flg=0; foreach($svglist as $f){  ?>
+        <div class="thumb_set"><a onClick="" href="./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized"></a>
+            <div class="image_cell"> <img src="./testSVG/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img> </div>
             <div class="info_cell">
-                <p><?php echo $svg['title'] ;?></p>
-                <p><?php echo $svg['date'] ;?></p>
+                <p><?php echo basename($f) ;?></p>
+            </div>
+            <div class="act_butts">
+                <button type=“button” href="location.href='./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized'">編集</button>
+                <div class="vertical">
+                    <button type=“button”>差替</button>
+                    <button type=“button”>削除</button>
+                </div>
             </div>
         </div>
         <?php $flg++;  ?>
-        <?php if($flg==4){ echo "<hr>"; $flg=0; }  ?>
+        <?php if($flg==6){ echo "<hr>"; $flg=0; }  ?>
+        <?php } ?>
+    </div>
+    <hr class="null">
+    <h2>フォルダ:IMG</h2>
+    <div class="list">
+        <?php $flg=0; foreach($imglist as $f){  ?>
+        <div class="thumb_set"><a onClick="" href="./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized"></a>
+            <div class="image_cell"><img src="./img/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img></div>
+            <div class="info_cell">
+                <p><?php echo basename($f) ;?></p>
+            </div>
+        </div>
+        <?php $flg++;  ?>
+        <?php if($flg==6){ echo "<hr>"; $flg=0; }  ?>
         <?php } ?>
     </div>
 </main>

@@ -24,6 +24,7 @@ main {
 #svg_view svg {
     display: inline-block;
     height: 100%;
+    width: 100%;
 }
 #property_panel {
     display: inline-flex;

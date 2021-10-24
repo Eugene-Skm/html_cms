@@ -6,11 +6,15 @@ $svgjson;
 if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
-
-    $flg = copy( './edited_svg_json/E_' . $fnm . '.json', './tmp/' . $fnm . '.json' );
-    $flg = copy( './edited_svg/E_' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
-
-    $jsonedit = new JSONEDIT( $fnm . '.json' );
+    
+    $flg = copy( './testSVG/' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
+    
+    $tmpare = "svg";
+    $svg_array = json_to_array( svg_to_json( $fnm ) );
+    $id_seted_json = set_atribute_tag( "id", $tmpare, $svg_array );
+    file_put_contents("./tmp/".$fnm.".json", json_encode($id_seted_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    
+    $jsonedit = new JSONEDIT( $fnm );
     $idlist = $jsonedit->get_allid();
     sort( $idlist );
 
@@ -27,6 +31,7 @@ if ( isset( $_GET[ "name" ] ) ) {
 <link href="css/editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <script type="text/javascript" src="js/openup.js" ></script> 
 <script type="text/javascript" src="js/editor.js" defer></script>
+
 </head>
 
 <body>

@@ -1,6 +1,6 @@
 <?php
 /*
- * require_once('./Controller/Connect.php');
+ * require_once('../Controller/Connect.php');
  * $select = new SelectData();
  *
  * $connect= new connect();
