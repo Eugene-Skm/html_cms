@@ -131,7 +131,7 @@ class JSONEDIT {
 
     public function close() {
         $fname=strstr($this->tname,".",true);
-        copy( './tmp/' . $fname . '.svg', './testSVG/' . $fname . '.svg' );
+        copy( './tmp/' . $fname . '.svg', './SVG/' . $fname . '.svg' );
         unlink('./tmp/' . $fname . '.svg');
         unlink('./tmp/' . $fname . '.json');
         return true;

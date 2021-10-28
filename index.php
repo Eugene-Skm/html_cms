@@ -1,9 +1,5 @@
 <?php
-//require_once( 'trashed_code/class_db_io.php' );
-
-//$db = new connect();
-//$list = $db->select_listsvg();
-$svglist = array_filter(glob("./testSVG/*.svg"),'is_file');
+$svglist = array_filter(glob("./SVG/*.svg"),'is_file');
 $imglist = array_filter(glob("./img/*"),'is_file');
 
 ?>
@@ -28,14 +24,14 @@ $imglist = array_filter(glob("./img/*"),'is_file');
     <div class="list">
         <?php $flg=0; foreach($svglist as $f){  ?>
         <div class="thumb_set"><a onClick="" href="./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized"></a>
-            <div class="image_cell"> <img src="./testSVG/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img> </div>
+            <div class="image_cell"> <img src="./SVG/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img> </div>
             <div class="info_cell">
                 <p><?php echo basename($f) ;?></p>
             </div>
             <div class="act_butts">
                 <button type=“button” href="location.href='./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized'">編集</button>
                 <div class="vertical">
-                    <button type=“button”>差替</button>
+                    <button type="button" onClick="window.open('replace_file_page.php?name=./SVG/<?php echo basename($f) ;?>','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
                     <button type=“button”>削除</button>
                 </div>
             </div>
@@ -48,10 +44,16 @@ $imglist = array_filter(glob("./img/*"),'is_file');
     <h2>フォルダ:IMG</h2>
     <div class="list">
         <?php $flg=0; foreach($imglist as $f){  ?>
-        <div class="thumb_set"><a onClick="" href="./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized"></a>
+        <div class="thumb_set">
             <div class="image_cell"><img src="./img/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img></div>
             <div class="info_cell">
                 <p><?php echo basename($f) ;?></p>
+            </div>
+            <div class="act_butts">
+                <div class="vertical">
+                    <button type="button" onClick="window.open('replace_file_page.php','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
+                    <button type=“button”>削除</button>
+                </div>
             </div>
         </div>
         <?php $flg++;  ?>

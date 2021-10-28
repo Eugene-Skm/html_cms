@@ -7,7 +7,7 @@ if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
     
-    $flg = copy( './testSVG/' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
+    $flg = copy( './SVG/' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
     
     $tmpare = "svg";
     $svg_array = json_to_array( svg_to_json( $fnm ) );
