@@ -32,7 +32,7 @@ $imglist = array_filter(glob("./img/*"),'is_file');
                 <button type=“button” href="location.href='./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized'">編集</button>
                 <div class="vertical">
                     <button type="button" onClick="window.open('replace_file_page.php?name=./SVG/<?php echo basename($f) ;?>','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
-                    <button type=“button”>削除</button>
+                    <button type="button" onClick="window.open('replace_file_back.php?del_file_path=./SVG/<?php echo basename($f) ;?>','削除','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">削除</button>
                 </div>
             </div>
         </div>
