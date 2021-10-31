@@ -19,7 +19,7 @@ $imglist = array_filter(glob("./img/*"),'is_file');
     <main>
         <form action="replace_file_back.php" method="get" >
             <h2>画像差替え</h2>
-            <div id="images_wrap">
+            <div id="img_wrap">
                 <div id="old_file" class="file_inspector">
                     <h3>選択画像</h3>
                     <div class="name_disp"><?php echo $name ;?></div>

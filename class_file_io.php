@@ -8,6 +8,7 @@ class file_io{
         }else{
             $this->tmpfp = $fpath;
         }
+        return $this->tmpfp;
     }
     
     function tmpcopy(){
@@ -16,19 +17,17 @@ class file_io{
         $pathData = pathinfo( $this->tmpfp );
         $this->tmpfp = $pathData["dirname"]."/tmp_".basename($this->tmpfp);
         $flg = copy($original_fp, $this->tmpfp );
-          if ($flg) {
-            return true;
-          } else {
-            return false;
-          }
+        return $flg;
     }
     
     function replace($newpath){
-        rename( $this->tmpfp, $newpath );
+        $flg = rename( $this->tmpfp, $newpath );
+        return $flg;
     }
     
     function delete(){
-        unlink($this->tmpfp);
+        $flg = unlink($this->tmpfp);
+        return $flg;
     }
     
     

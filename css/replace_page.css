@@ -16,7 +16,7 @@ form {
 form h2,h3{
     margin: 0;
 }
-#images_wrap {
+#img_wrap {
     display: inline-flex;
     flex-direction: row;
     margin: 0 auto;

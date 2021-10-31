@@ -13,8 +13,4 @@ function set_image(fname){
     }else{
         alert("ふぁいるたいぷが異なります。")
     }
-       
-    
-    
-    //make_hidden('new_file_path', fname);
 }

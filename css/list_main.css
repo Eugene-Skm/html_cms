@@ -1,6 +1,6 @@
 .list{
     display: inline-block;
-    width: 900px;
+    width: 100%;
 }
 hr[class="null"]{
     background-color: #E1E1E1;

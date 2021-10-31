@@ -1,5 +1,5 @@
 <?php
-$svglist = array_filter(glob("./SVG/*.svg"),'is_file');
+$svglist = array_filter(glob("./SVG/*"),'is_file');
 $imglist = array_filter(glob("./img/*"),'is_file');
 
 ?>
@@ -12,6 +12,8 @@ $imglist = array_filter(glob("./img/*"),'is_file');
 <title>Untitled Document</title>
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <link href="css/list_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+    <script type="text/javascript" src="js/index.js"></script>
+
 </head>
 <body>
 <header>
@@ -32,7 +34,8 @@ $imglist = array_filter(glob("./img/*"),'is_file');
                 <button type=“button” href="location.href='./edit_page.php?name=<?php echo str_replace('.svg', '', basename($f) ); ?>&st=initialized'">編集</button>
                 <div class="vertical">
                     <button type="button" onClick="window.open('replace_file_page.php?name=./SVG/<?php echo basename($f) ;?>','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
-                    <button type="button" onClick="window.open('replace_file_back.php?del_file_path=./SVG/<?php echo basename($f) ;?>','削除','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">削除</button>
+                    <button type="button" onClick="deleteconfirm('<?php echo basename($f); ?>')" >削除</button>
+                    
                 </div>
             </div>
         </div>
@@ -51,8 +54,8 @@ $imglist = array_filter(glob("./img/*"),'is_file');
             </div>
             <div class="act_butts">
                 <div class="vertical">
-                    <button type="button" onClick="window.open('replace_file_page.php','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
-                    <button type=“button”>削除</button>
+                    <button type="button" onClick="window.open('replace_file_page.php?name=./img/<?php echo basename($f) ;?>','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
+                    <button type="button" onClick="deleteconfirm('<?php echo basename($f); ?>')">削除</button>
                 </div>
             </div>
         </div>
