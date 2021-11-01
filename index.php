@@ -11,7 +11,7 @@ $imglist = array_filter(glob("./img/*"),'is_file');
 <meta name="viewport" content="width=device-width">
 <title>Untitled Document</title>
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-<link href="css/list_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+<link href="css/list_img.css" type="text/css" charset="utf-8" rel="stylesheet"/>
     <script type="text/javascript" src="js/index.js"></script>
 
 </head>

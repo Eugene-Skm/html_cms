@@ -7,6 +7,7 @@ $htmllist = array_filter( glob( "./testHTML/*" ), 'is_file' );
 <meta charset="utf-8">
 <title>無題ドキュメント</title>
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+<link href="css/list_page.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -18,8 +19,11 @@ $htmllist = array_filter( glob( "./testHTML/*" ), 'is_file' );
 <main>
     <ul>
         <?php foreach( $htmllist as $hl ){ ?>
-        <li><?php echo basename($hl) ?> 
-            <a href="page_editor.php?=<?php echo $hl ?>" ></a>
+        <li>
+            <div class="basic_name">
+                <?php echo basename($hl) ?> 
+                <a href="page_editor.php?=<?php echo $hl ?>" ></a>
+            </div>
         </li>
         <?php } ?>
     </ul>
