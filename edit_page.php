@@ -28,7 +28,7 @@ if ( isset( $_GET[ "name" ] ) ) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-<link href="css/editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+<link href="css/svg_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <script type="text/javascript" src="js/openup.js" ></script> 
 <script type="text/javascript" src="js/editor.js" defer></script>
 

@@ -22,7 +22,7 @@ $htmllist = array_filter( glob( "./testHTML/*" ), 'is_file' );
         <li>
             <div class="basic_name">
                 <?php echo basename($hl) ?> 
-                <a href="page_editor.php?=<?php echo $hl ?>" ></a>
+                <a href="page_editor.php?htmlnm=<?php echo $hl ?>" ></a>
             </div>
         </li>
         <?php } ?>
