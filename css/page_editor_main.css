@@ -35,3 +35,30 @@ main {
     padding-left: 10px;
     margin: 0;
 }
+#loading_panel {
+    display: inline-flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+}
+#loading_panel img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+}
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+        
+}

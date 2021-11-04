@@ -1,35 +1,15 @@
 // JavaScript Document
 setTimeout(function () { //iframe内 load待ち対策
 
-    //----------------------再起処理　ここから------------------------
-    //バブリング解決したから？？Z-indexいらんくね
-  /*  function strongLink(node, layer) {
-        if (node.nodeName === 'p' || node.nodeName === 'P') {
-            //特定要素に対する処理
-        }
-        try {
-            node.style.zIndex = layer;
-        } catch (e) {}
-        for (let i = 0; i < node.childNodes.length; i++) {
-            strongLink(node.childNodes[i], layer + 1); //再帰的呼び出し
-        }
-    }
-    //再起呼び出し　スタート地点　スクリプト言語のため呼び出し対象の後ろ側に来る
-    let contents = document.querySelector("html");
-    strongLink(contents, 0);*/
-    //----------------------再起処理　ここまで------------------------
-
     var elementlist = document.querySelectorAll('*');
-    //elementlist.shift();
     for (var i = 0; i < elementlist.length; i++) {
 
         elementlist[i].addEventListener('click', function (event) {
-            //イベントバブリング　https:
-            //ja.javascript.info/bubbling-and-capturing
             //イベントバブリング停止　
             //https://itsakura.com/javascript-bubbling
-            event.stopPropagation();
-            console.log(event.target);
+            event.stopPropagation();　//イベントバブリング停止　
+            
+            event.preventDefault();　　//デフォルトクリックイベント停止
             try {
                 //前回別カ所で作成されたtemp_idの削除
                 document.getElementById("temp_id").id = "";
@@ -41,9 +21,31 @@ setTimeout(function () { //iframe内 load待ち対策
             }
 
             //親iframe内要素に情報をセット
-            var titlecall = window.parent.document.getElementById("htmlt");
+            var titlecall = window.parent.document.getElementById("targeted_id");
             titlecall.innerHTML = event.target.tagName;
+            
+        }, true);
+        //https://ja.javascript.info/mousemove-mouseover-mouseout-mouseenter-mouseleave
+        elementlist[i].addEventListener('mouseover', function (event) {
+            event.stopPropagation();　//イベントバブリング停止　
+            
+            event.target.classList.add("hovered");
+            console.log(event.target);
+        }, true);
+        elementlist[i].addEventListener('mouseout', function (event) {
+            event.stopPropagation();　//イベントバブリング停止　
+            
+            event.target.classList.remove("hovered");
+            console.log(event.target);
         }, true);
     };
+    loaded();
+}, 10);
 
-}, 2000);
+function loaded(){
+    var loadpanel = window.parent.document.getElementById("loading_panel");
+    loadpanel.style.display='none'
+}
+function info_set(){
+    
+}
