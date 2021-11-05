@@ -21,8 +21,7 @@ setTimeout(function () { //iframe内 load待ち対策
             }
 
             //親iframe内要素に情報をセット
-            var titlecall = window.parent.document.getElementById("targeted_id");
-            titlecall.innerHTML = event.target.tagName;
+            info_set(event.target);
             
         }, true);
         //https://ja.javascript.info/mousemove-mouseover-mouseout-mouseenter-mouseleave
@@ -36,7 +35,6 @@ setTimeout(function () { //iframe内 load待ち対策
             event.stopPropagation();　//イベントバブリング停止　
             
             event.target.classList.remove("hovered");
-            console.log(event.target);
         }, true);
     };
     loaded();
@@ -46,6 +44,30 @@ function loaded(){
     var loadpanel = window.parent.document.getElementById("loading_panel");
     loadpanel.style.display='none'
 }
-function info_set(){
+function info_set( target ){
+    var titlecall = window.parent.document.getElementById("targeted_tag");
+    var titlecall2 = window.parent.document.getElementById("targeted_id");
+    titlecall.innerHTML = target.tagName;
+    titlecall2.value = target.id;
     
+  
+    
+    var in_tex_tag=['a','p','li','td','h1','h2','h3','h4','h5','address','dd','dt','spans'];
+    var in_img_tag=['img'];
+    
+    var text_place = window.parent.document.getElementById("inner_text");
+    var img_name = window.parent.document.getElementById("source_name");
+    var img_src = window.parent.document.getElementById("source_url");
+    text_place.disabled = true;
+    text_place.value = ""; 
+    
+    if(in_img_tag.includes(target.tagName.toLocaleLowerCase())){
+        img_name.innerHTML=target.getAttribute("src").substring(target.getAttribute("src").lastIndexOf("/")+1);
+        img_src.value=target.getAttribute("src");
+    }else if(in_tex_tag.includes(target.tagName.toLocaleLowerCase())){
+        text_place.disabled = false;
+        text_place.value = target.innerHTML;
+    }
 }
+
+

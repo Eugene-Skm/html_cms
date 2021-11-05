@@ -1,5 +1,5 @@
 <?php
-$htmllist = array_filter( glob( "./testHTML/*" ), 'is_file' );
+$htmllist = array_filter( glob( "./testHTML/*.html" ), 'is_file' );
 ?>
 <!doctype html>
 <html>

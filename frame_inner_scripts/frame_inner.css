@@ -2,7 +2,7 @@
 aa:hover {
     opacity: 0.6;
     filter: brightness(60%) blur(1px);
-}
+}    
 .hovered {
     /**opacity: 0.6;
     filter: brightness(70%);*/

@@ -16,6 +16,7 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
 <link href="css/page_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/page_editor_jq.js"></script>
+<script type="text/javascript" src="js/page_editor_prop.js" defer></script>
 
 </head>
 
@@ -34,11 +35,24 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                 <p id="htmlt"><?php echo basename($htmlpath); ?></p>
             </div>
             <div class="puroperty">
-                <h4>ID名</h4>
-                <p id="targeted_id"><?php echo basename($htmlpath); ?></p>
+                <h4>タグ名</h4>
+                <p id="targeted_tag"><?php echo basename($htmlpath); ?></p>
+                <input type="hidden" id="targeted_id" value="">
             </div>
             <hr>
-            
+            <div class="puroperty">
+                <h4>内部テキスト</h4>
+                <textarea type="text" id="inner_text"></textarea>
+            </div>
+            <div class="puroperty">
+                <h4>画像パス</h4>
+                <label id='source_name'></label>
+                <input type='button' id='source_select'>
+                <input type='hidden' id='source_url'>
+            </div>
+            <div class="puroperty">
+                <input type="button" id="edit_inner_code" value="edit_inner_code">
+            </div>
         </div>
         
         
