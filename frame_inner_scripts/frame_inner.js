@@ -24,16 +24,15 @@ setTimeout(function () { //iframe内 load待ち対策
             info_set(event.target);
             
         }, true);
+        
         //https://ja.javascript.info/mousemove-mouseover-mouseout-mouseenter-mouseleave
         elementlist[i].addEventListener('mouseover', function (event) {
             event.stopPropagation();　//イベントバブリング停止　
-            
             event.target.classList.add("hovered");
-            console.log(event.target);
         }, true);
+        
         elementlist[i].addEventListener('mouseout', function (event) {
             event.stopPropagation();　//イベントバブリング停止　
-            
             event.target.classList.remove("hovered");
         }, true);
     };
@@ -50,24 +49,39 @@ function info_set( target ){
     titlecall.innerHTML = target.tagName;
     titlecall2.value = target.id;
     
-  
-    
-    var in_tex_tag=['a','p','li','td','h1','h2','h3','h4','h5','address','dd','dt','spans'];
+    var in_tex_tag=['a','p','li','td','h1','h2','h3','h4','h5','address','dd','dt','span'];
     var in_img_tag=['img'];
     
-    var text_place = window.parent.document.getElementById("inner_text");
-    var img_name = window.parent.document.getElementById("source_name");
-    var img_src = window.parent.document.getElementById("source_url");
-    text_place.disabled = true;
-    text_place.value = ""; 
+    var textarea_text_place = window.parent.document.getElementById("inner_text");
+    var button_big_editor = window.parent.document.getElementById("big_editor");
+    var label_img_name = window.parent.document.getElementById("img_name");
+    var button_img_change = window.parent.document.getElementById("img_select");
+    var hidden_img_src = window.parent.document.getElementById("img_url");
+    
+    textarea_text_place.disabled = true;
+    textarea_text_place.value = ""; 
+    button_big_editor.disabled=true;
+    
+    label_img_name.innerHTML="";
+    label_img_name.disabled=true;
+    button_img_change.disabled=true;
+    hidden_img_src.value="";
     
     if(in_img_tag.includes(target.tagName.toLocaleLowerCase())){
-        img_name.innerHTML=target.getAttribute("src").substring(target.getAttribute("src").lastIndexOf("/")+1);
-        img_src.value=target.getAttribute("src");
+        label_img_name.innerHTML=target.getAttribute("src").substring(target.getAttribute("src").lastIndexOf("/")+1);
+        hidden_img_src.value=target.getAttribute("src");
+        button_img_change.disabled=false;
     }else if(in_tex_tag.includes(target.tagName.toLocaleLowerCase())){
-        text_place.disabled = false;
-        text_place.value = target.innerHTML;
+        textarea_text_place.disabled = false;
+        textarea_text_place.value = set_break(target.innerHTML);
+        button_big_editor.disabled=false;
     }
 }
 
-
+function set_break(value){
+    var val = value.replaceAll("><",">\n<");
+    var val = val.replaceAll(">",">\n");
+    var val = val.replaceAll("<","\n<");
+    var val = val.replaceAll("\n\n","");
+    return val;
+}

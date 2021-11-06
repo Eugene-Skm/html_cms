@@ -2,7 +2,7 @@
 $htmlpath = "";
 if ( isset( $_GET[ "htmlnm" ] ) ) {
     $htmlpath = $_GET[ "htmlnm" ];
-    
+
 }
 ?>
 
@@ -14,10 +14,11 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
 <meta name="viewport" content="width=device-width">
 <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <link href="css/page_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/page_editor_jq.js"></script>
-<script type="text/javascript" src="js/page_editor_prop.js" defer></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+<script type="text/javascript" src="js/page_editor_jq.js"></script> 
+<script type="text/javascript" src="js/page_editor_prop.js" defer></script> 
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,38 +34,39 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
             <div class="puroperty">
                 <h3>HTML名</h3>
                 <p id="htmlt"><?php echo basename($htmlpath); ?></p>
+                <input type="button" id="edit_html_code" value="HTMLコード編集">
             </div>
             <div class="puroperty">
                 <h4>タグ名</h4>
                 <p id="targeted_tag"><?php echo basename($htmlpath); ?></p>
                 <input type="hidden" id="targeted_id" value="">
+                <input type="button" id="edit_inner_code" value="タグ内コード編集">
             </div>
             <hr>
             <div class="puroperty">
                 <h4>内部テキスト</h4>
                 <textarea type="text" id="inner_text"></textarea>
+                <input type='button' id='big_editor' value="エディタ起動">
             </div>
             <div class="puroperty">
                 <h4>画像パス</h4>
-                <label id='source_name'></label>
-                <input type='button' id='source_select'>
-                <input type='hidden' id='source_url'>
+                <label id='img_name'></label>
+                <input type='button' id='img_select' value="差し替え">
+                <input type='hidden' id='img_url' value="">
             </div>
             <div class="puroperty">
-                <input type="button" id="edit_inner_code" value="edit_inner_code">
+                
             </div>
         </div>
-        
-        
         <div id="page_view">
-            <iframe id="htmlframe" src="<?php echo $htmlpath."?".date("YmdHis"); ?>"></iframe> 
+            <iframe id="htmlframe" src="<?php echo $htmlpath."?".date("YmdHis"); ?>"></iframe>
         </div>
         <div id="functional_Buttons">
             <button id="save" style='display: inline-block; width:"100px";' onClick="xmlhttp_close()"><img src="img/save.svg" width="50px"></button>
         </div>
     </div>
 </main>
-    <script defer>
+<script defer>
         setTimeout(function(){
             var iframe = document.getElementById('htmlframe'); 
             var innerDoc = iframe.contentDocument || iframe.contentWindow.document; 

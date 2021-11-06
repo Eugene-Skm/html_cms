@@ -61,3 +61,11 @@ main {
   visibility: hidden;
   display: none;
 }
+#inner_text{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 95%;
+    height: 100px;
+    resize: none;
+        
+}
