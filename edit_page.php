@@ -31,9 +31,7 @@ if ( isset( $_GET[ "name" ] ) ) {
 <link href="css/svg_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
 <script type="text/javascript" src="js/openup.js" ></script> 
 <script type="text/javascript" src="js/editor.js" defer></script>
-
 </head>
-
 <body>
 <header>
     <div id="topbar">

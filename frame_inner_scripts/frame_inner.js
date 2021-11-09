@@ -8,13 +8,11 @@ setTimeout(function () { //iframe内 load待ち対策
             //イベントバブリング停止　
             //https://itsakura.com/javascript-bubbling
             event.stopPropagation();　//イベントバブリング停止　
-            
             event.preventDefault();　　//デフォルトクリックイベント停止
             try {
                 //前回別カ所で作成されたtemp_idの削除
                 document.getElementById("temp_id").id = "";
             } catch (e) {}
-
             //idが無い場合、一時的に仮のidを作成
             if (event.target.id == null || event.target.id == "") {
                 event.target.id = "temp_id";
@@ -49,14 +47,17 @@ function info_set( target ){
     titlecall.innerHTML = target.tagName;
     titlecall2.value = target.id;
     
-    var in_tex_tag=['a','p','li','td','h1','h2','h3','h4','h5','address','dd','dt','span'];
+    var in_tex_tag=['p','li','td','h1','h2','h3','h4','h5','address','dd','dt','span','strong','b','i','u'];
     var in_img_tag=['img'];
+    var in_link_tag=['a'];
     
     var textarea_text_place = window.parent.document.getElementById("inner_text");
     var button_big_editor = window.parent.document.getElementById("big_editor");
     var label_img_name = window.parent.document.getElementById("img_name");
     var button_img_change = window.parent.document.getElementById("img_select");
     var hidden_img_src = window.parent.document.getElementById("img_url");
+    var link_text = window.parent.document.getElementById("link_text");
+    var link_url = window.parent.document.getElementById("link_url");
     
     textarea_text_place.disabled = true;
     textarea_text_place.value = ""; 
@@ -67,6 +68,11 @@ function info_set( target ){
     button_img_change.disabled=true;
     hidden_img_src.value="";
     
+    link_text.disabled=true;
+    link_text.value = "";
+    link_url.disabled=true;
+    link_url.value="";
+
     if(in_img_tag.includes(target.tagName.toLocaleLowerCase())){
         label_img_name.innerHTML=target.getAttribute("src").substring(target.getAttribute("src").lastIndexOf("/")+1);
         hidden_img_src.value=target.getAttribute("src");
@@ -75,6 +81,11 @@ function info_set( target ){
         textarea_text_place.disabled = false;
         textarea_text_place.value = set_break(target.innerHTML);
         button_big_editor.disabled=false;
+    }else if(in_link_tag.includes(target.tagName.toLocaleLowerCase())){
+        link_text.disabled = false;
+        link_text.value = target.innerHTML;
+        link_url.disabled=false;
+        link_url.value=target.getAttribute("href");
     }
 }
 
