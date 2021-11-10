@@ -30,7 +30,6 @@ if($result){
 <html>
     <head>
         <script type="text/javascript" >
-        
             setTimeout(function(){
                 window.close();
             },1000);

@@ -101,7 +101,6 @@ function change_paretnt_a(obj_path){
     target.parentElement.href=obj_path;
 }
 
-
 function save_close(){
     var iframe = document.getElementById('htmlframe'); 
     var f_name = document.getElementById("htmlt").innerHTML;
@@ -138,8 +137,8 @@ function callxmlhttp(contents, fn ){
         html_xmlhttp_gate(statement)
     }
     //setTimeout(function(){
-        window.location.href = './page_list.php';
-   // },1000);
+    window.location.href = './page_list.php';
+    //},1000);
     
 }
 
@@ -155,9 +154,9 @@ function html_xmlhttp_gate(sttext){
         request.send();
 }
 
-/*var iframe = $("#htmlframe");
-     console.log(iframe.contents().find('html').html() );
-     document.getElementById("inner_text").value=innerDoc.innerHTML;*/
+/*  var iframe = $("#htmlframe");
+    console.log(iframe.contents().find('html').html() );
+    document.getElementById("inner_text").value=innerDoc.innerHTML;*/
 /*　全HTML取得用コード
     const elem = document.getElementById('htmlframe');
     const target = elem.contentWindow.document.querySelector('html');
@@ -167,14 +166,15 @@ function html_xmlhttp_gate(sttext){
 
     $('#htmlframe').on('load', function () {
         var iframe = $("#htmlframe");
-        // console.log(iframe.contents().find('html').html() );
-//    }*/
+        console.log(iframe.contents().find('html').html() );
+    }*/
 
 /* var iframe = document.getElementById('htmlframe'); 
  var innerDoc = iframe.contentDocument || iframe.contentWindow.document; 
  console.log("A");
- //console.log(innerDoc);
+ console.log(innerDoc);
  
  var doc = document.getElementsByTagName("iframe")[0].contentWindow.document;
  console.log("B");
- //console.log(doc);*/
+ console.log(doc);
+ */
