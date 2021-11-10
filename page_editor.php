@@ -28,6 +28,7 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
         <script type="text/javascript" src="js/page_editor_jq.js"></script>
         <script type="text/javascript" src="js/page_editor_prop.js" defer="defer"></script>
         <script type="text/javascript" src="js/path_calclater.js" defer="defer"></script>
+        <script type="text/javascript" src="js/hex_translater.js" defer="defer"></script>
     </head>
 
     <body>
@@ -84,7 +85,7 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                     <button
                         id="save"
                         style='display: inline-block; width:"100px";'
-                        onclick="xmlhttp_close()"><img src="img/save.svg" width="50px"></button>
+                        onclick="save_close()"><img src="img/save.svg" width="50px"></button>
                 </div>
             </div>
             <div id="dialog">

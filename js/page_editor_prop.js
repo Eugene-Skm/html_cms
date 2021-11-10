@@ -66,10 +66,7 @@ function call_change_html_from_dialog(){
     var new_alt=document.getElementById("alt_input").value;
     var img_path=img_path=document.getElementById("rl_path").value;
     console.log(img_path);
-    var new_a_path="";
-    
-        
-        new_a_path=document.getElementById(targetval).value || document.getElementById(targetval).innerHTML;
+    var new_a_path=document.getElementById(targetval).value || document.getElementById(targetval).innerHTML;
     }catch{}
     
     document.getElementById("dialog").style.display="none";
@@ -95,6 +92,7 @@ function change_html(type, cont, cont2=null, cont3=null) {
     }else if( type=="link_url"){
         target.href=cont;
     }
+    
 }
 function change_paretnt_a(obj_path){
     var id = document.getElementById('targeted_id').value;
@@ -103,6 +101,63 @@ function change_paretnt_a(obj_path){
     target.parentElement.href=obj_path;
 }
 
+
+function save_close(){
+    var iframe = document.getElementById('htmlframe'); 
+    var f_name = document.getElementById("htmlt").innerHTML;
+    var elementlist = iframe.contentWindow.document.querySelectorAll('*');
+    for (var i = 0; i < elementlist.length; i++) {
+    var targetclass=elementlist[i].getAttribute("class");
+        if(targetclass == null || targetclass == undefined || targetclass == ""  ){
+            
+            elementlist[i].removeAttribute("class");
+        }
+    }
+    var tmpelementlist = iframe.contentWindow.document.querySelectorAll(".temporary_script");
+    for (var i = 0; i < elementlist.length; i++) {
+        var e = tmpelementlist[i];
+        if (e) {
+          e.parentNode.removeChild(e);
+        }
+    }
+    
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document; 
+    var targettext=innerDoc.body.parentElement.innerHTML;
+    targettext = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html>\n' + targettext + '\n</html>';
+    const hex_targettext_array = string_to_utf8_hex_string(targettext).match(/.{1,1000}/g);
+    callxmlhttp(hex_targettext_array,f_name);
+}
+
+function callxmlhttp(contents, fn ){
+    var pagecount=contents.length;
+    for(var u=0; u<contents.length; u++){
+        var currentpage= u + 1;
+        
+        var statement= "fname=" + fn +"&cont="+contents[u]+"&cpage="+currentpage +"&psum="+pagecount;
+
+        html_xmlhttp_gate(statement)
+    }
+    //setTimeout(function(){
+        window.location.href = './page_list.php';
+   // },1000);
+    
+}
+
+function html_xmlhttp_gate(sttext){
+    var request = new XMLHttpRequest();
+        request.open('GET', "./xmlhttpgate_forhtml.php?" + sttext, true);
+        request.responseType = '';
+       /* request.addEventListener('load', function (response) {
+            // JSONデータを受信した後の処理
+            _returnValues = this.response;
+            request.abort();
+        });*/
+        request.send();
+}
+
+/*var iframe = $("#htmlframe");
+     console.log(iframe.contents().find('html').html() );
+     document.getElementById("inner_text").value=innerDoc.innerHTML;*/
 /*　全HTML取得用コード
     const elem = document.getElementById('htmlframe');
     const target = elem.contentWindow.document.querySelector('html');
