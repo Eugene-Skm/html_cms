@@ -1,5 +1,5 @@
 <?php
-include("./svg_initialize.php");
+include("./script_svg_initialize.php");
 /**
 * 1$jsonedit = new JSONEDIT("ファイル名(拡張子付き)")
 * 2$jsonedit->get_attributes($id);

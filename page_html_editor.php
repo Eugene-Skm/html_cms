@@ -95,11 +95,6 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                             <p>alt属性（代替テキスト）の設定</p>
                             <input type="text" id="alt_input" value="">
                         </div>
-                        <!--<div id="set_wh">
-                            <p>alt属性（代替テキスト）の設定</p>
-                            幅<input type="text" id="w_input" value="">×高さ
-                            <input type="text" id="h_input" value="">
-                        </div>-->
                     </div>
                     <hr>
                     <div id="a_alert">
@@ -122,43 +117,7 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                 </form>
             </div>
         </main>
-        <script defer="defer">
-            setTimeout(function () {
-                var iframe = document.getElementById('htmlframe');
-                var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                console.log("A");
-                //console.log(innerDoc);
-
-                var doc = document
-                    .getElementsByTagName("iframe")[0]
-                    .contentWindow
-                    .document;
-                console.log("B");
-                //console.log(doc);
-
-                const elem = document.getElementById('htmlframe');
-                const target = elem
-                    .contentWindow
-                    .document
-                    .querySelector('html');
-                console.log("C");
-                //console.log(target.innerHTML); target.style.textAlign = 'right';
-                /*
-            var o_iframe = document.getElementById('htmlframe');
-            var color = o_iframe.contentWindow.document.getElementById('nn');
-            console.log("D");
-            console.log(o_iframe);
-            color.innerHTML = "赤色に変えました。";
-            color.style.background = "red";
-*/
-
-            }, 10);
-
-            $('#htmlframe').on('load', function () {
-                var iframe = $("#htmlframe");
-                // console.log(iframe.contents().find('html').html() );
-            });
-        </script>
+       
         <aside></aside>
         <footer></footer>
     </body>

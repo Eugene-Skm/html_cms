@@ -1,6 +1,6 @@
 <?php
-if(!file_exists('profile.csv')){
-    header('Location: ./initialize.php');
+if(!file_exists('./data/profile.csv')){
+    header('Location: ./page_initialize.php');
 }
 ?>
 <!doctype html>
@@ -22,12 +22,12 @@ if(!file_exists('profile.csv')){
     <ul>
         <li>
             <div class="basic_name">
-                <a href="page_list.php">HTMLリスト</a>
+                <a href="page_html_list.php">HTMLリスト</a>
             </div>
         </li>
         <li>
             <div class="basic_name">
-                <a href="img_list.php">画像リスト</a>
+                <a href="page_img_list.php?pattern=img_edit">画像リスト</a>
             </div>
         </li>
     </ul>

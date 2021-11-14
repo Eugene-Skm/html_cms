@@ -85,5 +85,5 @@ function xmlhttp_update(tag, value) {
 function xmlhttp_close() {
     pullup.setMethodtype("cls");
     pullup.mainmethod();
-    window.location.href = './img_list.php?pattern=img_edit';
+    window.location.href = './page_img_list.php?pattern=img_edit';
 }

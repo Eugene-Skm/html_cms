@@ -28,7 +28,7 @@ setTimeout(function () {
 }, 20);
 
 function img_selector_open() {
-    window.open('img_list.php?pattern=img_select', '差替選択', 'width=950,height=650,left=20%,toolbar=no,menubar=no,scrollbars=yes');
+    window.open('page_img_list.php?pattern=img_select', '差替選択', 'width=950,height=650,left=20%,toolbar=no,menubar=no,scrollbars=yes');
     window.onstorage = event => {
         if (event.key === 'new_img') {
             // msg というキーに値が設定されたらその新しい値を表示
@@ -136,15 +136,12 @@ function callxmlhttp(contents, fn ){
 
         html_xmlhttp_gate(statement)
     }
-    //setTimeout(function(){
-    window.location.href = './page_list.php';
-    //},1000);
-    
+    window.location.href = './page_html_list.php';    
 }
 
 function html_xmlhttp_gate(sttext){
     var request = new XMLHttpRequest();
-        request.open('GET', "./xmlhttpgate_forhtml.php?" + sttext, true);
+        request.open('GET', "./gate_xmlhttp_html.php?" + sttext, true);
         request.responseType = '';
        /* request.addEventListener('load', function (response) {
             // JSONデータを受信した後の処理
@@ -153,28 +150,3 @@ function html_xmlhttp_gate(sttext){
         });*/
         request.send();
 }
-
-/*  var iframe = $("#htmlframe");
-    console.log(iframe.contents().find('html').html() );
-    document.getElementById("inner_text").value=innerDoc.innerHTML;*/
-/*　全HTML取得用コード
-    const elem = document.getElementById('htmlframe');
-    const target = elem.contentWindow.document.querySelector('html');
-    console.log("C");
-    console.log(target.innerHTML);
-    target.style.textAlign = 'right';
-
-    $('#htmlframe').on('load', function () {
-        var iframe = $("#htmlframe");
-        console.log(iframe.contents().find('html').html() );
-    }*/
-
-/* var iframe = document.getElementById('htmlframe'); 
- var innerDoc = iframe.contentDocument || iframe.contentWindow.document; 
- console.log("A");
- console.log(innerDoc);
- 
- var doc = document.getElementsByTagName("iframe")[0].contentWindow.document;
- console.log("B");
- console.log(doc);
- */

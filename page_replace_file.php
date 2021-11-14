@@ -17,7 +17,7 @@ $imglist= $fgets->get_type_of_file_path("img");
     <script type="text/javascript" src="js/replace_page.js"></script>
 </head>
     <main>
-        <form action="replace_file_back.php" method="get" >
+        <form action="page_replace_result.php" method="get" >
             <h2>画像差替え</h2>
             <div id="img_wrap">
                 <div id="old_file" class="file_inspector">

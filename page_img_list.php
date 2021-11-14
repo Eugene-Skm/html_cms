@@ -4,7 +4,6 @@ $pattern = "";
 if ( isset( $_GET[ 'pattern' ] ) ) {
     // img_edit || img_select
     $pattern = $_GET[ 'pattern' ];
-    
 }
 $fgets=new file_io("./data/profile.csv");
 $imglist= $fgets->get_type_of_file_path("img");
@@ -42,7 +41,7 @@ $current_fpath="";
             <?php if ( $_GET[ 'pattern' ] == "img_edit" ) { 
                     if(strtolower($filepath['extension'])=="svg"){
             ?>
-            <a onClick="" href="./edit_page.php?name=<?php echo $f; ?>&st=initialized"></a>
+            <a onClick="" href="./page_svg_editor.php?name=<?php echo $f; ?>&st=initialized"></a>
             <?php } 
                 }
             ?>
@@ -55,10 +54,10 @@ $current_fpath="";
                 <?php if ( $_GET[ 'pattern' ] == "img_edit" ) { 
                 if(strtolower($filepath['extension'])=="svg"){
                 ?>
-                 <button type=“button” href="location.href='./edit_page.php?name=<?php echo $f; ?>&st=initialized'">編集</button>
+                 <button type=“button” href="location.href='./page_svg_editor.php?name=<?php echo $f; ?>&st=initialized'">編集</button>
                 <?php  }; ?>
                 <div class="vertical">
-                    <button type="button" onClick="window.open('replace_file_page.php?name=./img/<?php echo basename($f) ;?>','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
+                    <button type="button" onClick="window.open('page_replace_file.php?name=<?php echo $f ;?>','差替選択','width=900,height=650,toolbar=no,menubar=no,scrollbars=yes')">差替</button>
                     <button type="button" onClick="deleteconfirm('<?php echo basename($f); ?>')" >削除</button>
                 </div>
                 <?php } else if ( $_GET[ 'pattern' ] == "img_select" ) { ?>

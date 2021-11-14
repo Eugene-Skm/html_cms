@@ -81,7 +81,7 @@ class Xmlgate {
         //Xmlhttp 開始
 
         var request = new XMLHttpRequest();
-        request.open('GET', "./xmlhttp_gate.php?" + this.statement, true);
+        request.open('GET', "./gate_xmlhttp_svg.php?" + this.statement, true);
         request.responseType = '';
         console.log(this.statement);
         request.addEventListener('load', function (response) {

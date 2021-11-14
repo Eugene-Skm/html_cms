@@ -1,6 +1,6 @@
 <?php
 require_once('class_db_io.php');
-require_once( "../svg_initialize.php" );
+require_once( "../script_svg_initialize.php" );
 
 $tempfile="";
 $filename="";

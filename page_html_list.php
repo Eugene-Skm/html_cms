@@ -24,7 +24,7 @@ $htmllist= $fgets->get_type_of_file_path("html");
         <li>
             <div class="basic_name">
                 <?php echo basename($hl) ?> 
-                <a href="page_editor.php?htmlnm=<?php echo $hl ?>" ></a>
+                <a href="page_html_editor.php?htmlnm=<?php echo $hl ?>" ></a>
             </div>
         </li>
         <?php } ?>
