@@ -83,9 +83,11 @@ class Xmlgate {
         var request = new XMLHttpRequest();
         request.open('GET', "./xmlhttp_gate.php?" + this.statement, true);
         request.responseType = '';
+        console.log(this.statement);
         request.addEventListener('load', function (response) {
             // JSONデータを受信した後の処理
             _returnValues = this.response;
+            console.log(_returnValues);
             if(_returnValues=="saved"){
                savechecked();
             }else if(!isJson(_returnValues)){

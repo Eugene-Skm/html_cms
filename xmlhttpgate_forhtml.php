@@ -40,7 +40,6 @@ function merge_call($fn,$p){
 	$new_html = new file_io($fn);
 	$new_html->write_content($binarydata);
 	$new_html->replace($new_fp);
-	var_dump($binarydata);
 }
 
 ?>

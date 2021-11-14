@@ -6,15 +6,14 @@ $svgjson;
 if ( isset( $_GET[ "name" ] ) ) {
     $fnm = $_GET[ "name" ];
     $st = $_GET[ "st" ];
-    
-    $flg = copy( './SVG/' . $fnm . '.svg', './tmp/' . $fnm . '.svg' );
+    $filename =pathinfo($fnm);
+    $flg = copy( $fnm , './tmp/' . $filename['basename'] );
     
     $tmpare = "svg";
     $svg_array = json_to_array( svg_to_json( $fnm ) );
     $id_seted_json = set_atribute_tag( "id", $tmpare, $svg_array );
-    file_put_contents("./tmp/".$fnm.".json", json_encode($id_seted_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-    
-    $jsonedit = new JSONEDIT( $fnm );
+    file_put_contents("./tmp/".$filename['filename'].".json", json_encode($id_seted_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    $jsonedit = new JSONEDIT( $filename['filename'] );
     $idlist = $jsonedit->get_allid();
     sort( $idlist );
 

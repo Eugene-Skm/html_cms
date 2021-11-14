@@ -18,10 +18,11 @@ class JSONEDIT {
     private $target;
     private $target_keys;
     private $tname;
-
+    private $filename;
     function __construct( $jname ) {
-        
-        $this->tname=$jname . '.json';
+        //var_dump($jname);
+        $this->filename =pathinfo($jname);
+        $this->tname=$this->filename['filename'] . '.json';
         $url = "./tmp/" . $this->tname;
         $this->target_json = file_get_contents( $url );
         $this->assosiative_array = json_decode( $this->target_json, true );
@@ -119,9 +120,9 @@ class JSONEDIT {
     private function update_json(){
         //var_dump("CC");
         $fname=strstr($this->tname,".",true);
-        file_put_contents("./tmp/".$fname.".json", json_encode($this->assosiative_array));
+        file_put_contents("./tmp/".$this->filename["filename"].".json", json_encode($this->assosiative_array));
         ini_set('display_errors', 0);
-        file_put_contents("./tmp/".$fname.".svg", json_to_svgstring($this->assosiative_array));
+        file_put_contents("./tmp/".$this->filename["basename"], json_to_svgstring($this->assosiative_array));
         ini_set('display_errors', 1);
         
         
@@ -131,9 +132,10 @@ class JSONEDIT {
 
     public function close() {
         $fname=strstr($this->tname,".",true);
-        copy( './tmp/' . $fname . '.svg', './SVG/' . $fname . '.svg' );
-        unlink('./tmp/' . $fname . '.svg');
-        unlink('./tmp/' . $fname . '.json');
+        var_dump($this->filename["dirname"] ."/". $this->filename["basename"]);
+        copy( './tmp/' . $this->filename["basename"] , $this->filename["dirname"] ."/". $this->filename["basename"] );
+        unlink('./tmp/' . $this->filename["basename"]);
+        unlink('./tmp/' . $this->filename["filename"] . '.json');
         return true;
     }
 }

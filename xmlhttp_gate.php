@@ -17,8 +17,8 @@ if ( isset( $_GET[ "st" ] ) ) {
     } elseif( $st == "ged" ) {
         $id = $_GET[ "id" ];
     }
-
-    $jsonedit = new JSONEDIT( $fnm  );
+    $filename =pathinfo($fnm);
+    $jsonedit = new JSONEDIT( $fnm);
     $jsonedit -> get_attributes( $id );
 
     if ( $st == "ini" ) {
@@ -29,15 +29,15 @@ if ( isset( $_GET[ "st" ] ) ) {
         $tags = $jsonedit -> get_tag();
         $flg = true;
     }elseif( $st == "cls" ){
-        $jsonedit -> close();
+        $flg = $jsonedit -> close();
     }
     usleep(10);
     if ( $flg ) {
         
         if($st=="ged"){
             echo json_encode($tags, JSON_PRETTY_PRINT| JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        }else{
-            echo  file_get_contents( './tmp/' . $fnm . '.svg' );
+        }else if ($st!="cls"){
+            echo file_get_contents( "./tmp/".$filename['basename'] );
         }
         
     } else {

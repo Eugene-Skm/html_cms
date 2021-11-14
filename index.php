@@ -1,4 +1,8 @@
-
+<?php
+if(!file_exists('profile.csv')){
+    header('Location: ./initialize.php');
+}
+?>
 <!doctype html>
 <html>
 <head>

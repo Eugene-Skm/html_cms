@@ -1,5 +1,7 @@
 <?php
-$htmllist = array_filter( glob( "./testHTML/*.html" ), 'is_file' );
+include("./class_file_io.php");
+$fgets=new file_io("./data/profile.csv");
+$htmllist= $fgets->get_type_of_file_path("html");
 ?>
 <!doctype html>
 <html>

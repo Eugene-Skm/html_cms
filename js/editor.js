@@ -31,7 +31,7 @@ function getFname() {
 
         }
     }
-
+    console.log(queryObject["name"])
     return queryObject["name"];
 }
 

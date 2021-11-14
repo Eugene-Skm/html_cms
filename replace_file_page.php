@@ -1,11 +1,11 @@
 <?php
+include("./class_file_io.php");
 $name="";
 if(isset($_GET["name"])){
     $name=$_GET["name"];    
 }
-
-$svglist = array_filter(glob("./SVG/*"),'is_file');
-$imglist = array_filter(glob("./img/*"),'is_file');
+$fgets=new file_io("./data/profile.csv");
+$imglist= $fgets->get_type_of_file_path("img");
 ?>
 
 <!doctype html>
@@ -44,23 +44,12 @@ $imglist = array_filter(glob("./img/*"),'is_file');
             <div id="selector_img_list">
                 <?php $flg=0; foreach($imglist as $f){  ?>
                 <div class="thumb_set">
-                    <div class="image_cell"><img src="./img/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img></div>
+                    <div class="image_cell"><img src="<?php echo $f ;?>?<?php echo date("YmdHis");?>" ></img></div>
                     <div class="info_cell">
                         <p><?php echo basename($f) ;?></p>
                     </div>
                     <div class="act_butts">
-                            <button type="button" onClick="set_image('./img/<?php echo basename($f) ;?>')">選択</button>
-                    </div>
-                </div>
-                <?php } ?>
-                <?php $flg=0; foreach($svglist as $f){  ?>
-                <div class="thumb_set">
-                    <div class="image_cell"><img src="./SVG/<?php echo basename($f) ;?>?<?php echo date("YmdHis");?>" ></img></div>
-                    <div class="info_cell">
-                        <p><?php echo basename($f) ;?></p>
-                    </div>
-                    <div class="act_butts">
-                            <button type="button" onClick="set_image('./SVG/<?php echo basename($f) ;?>')">選択</button>
+                            <button type="button" onClick="set_image('<?php echo $f ;?>')">選択</button>
                     </div>
                 </div>
                 <?php } ?>

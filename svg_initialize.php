@@ -12,7 +12,7 @@ $tag_info = [ "rect", "circle", "ellipse", "line", "polyline", "polygon", "path"
  * @return 返還後のJSON
  */
 function svg_to_json( $fname ) {
-    $rdfile = './SVG/' . $fname.".svg";
+    $rdfile =  $fname;
     $svg = file_get_contents( $rdfile );
 
     $domDocument = new DOMDocument();

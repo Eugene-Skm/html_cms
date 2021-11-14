@@ -1,0 +1,10 @@
+<svg xmlns='http://www.w3.org/2000/svg' id='svg-1' viewBox='0 0 250.5 487.5' >
+<g id='g-1' data-name='レイヤー 2' >
+<ellipse id='ellipse-1' cx='200.5' cy='345.5' rx='28' ry='37' fill='#a7eb14' stroke='#d05635' stroke-miterlimit='10' stroke-width='10' stroke-opacity='0.66' />
+<circle id='circle-1' cx='211.25' cy='448.25' r='38.75' fill='#ea5514' stroke='#231815' stroke-miterlimit='10' />
+</g>
+<g id='g-2' data-name='レイヤー 1' >
+<rect id='rect-1' x='0.5' y='0.5' width='98' height='38' fill='#1d110b' stroke='#231815' stroke-miterlimit='10' />
+<rect id='rect-2' x='0.5' y='133.5' width='98' height='34' fill='#1138d4' stroke='#231815' stroke-miterlimit='10' fill-opacity='1' />
+</g>
+</svg>
