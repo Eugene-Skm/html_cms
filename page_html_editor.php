@@ -13,18 +13,8 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-        <link
-            href="css/page_editor_main.css"
-            type="text/css"
-            charset="utf-8"
-            rel="stylesheet"/>
+        <link href="css/page_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script
-            type="text/javascript"
-            src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script type="text/javascript" src="js/page_editor_jq.js"></script>
         <script type="text/javascript" src="js/page_editor_prop.js" defer="defer"></script>
         <script type="text/javascript" src="js/path_calclater.js" defer="defer"></script>
