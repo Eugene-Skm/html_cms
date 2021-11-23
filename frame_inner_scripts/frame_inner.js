@@ -50,6 +50,7 @@ function info_set( target ){
     var in_tex_tag=['p','li','td','h1','h2','h3','h4','h5','address','dd','dt','span','strong','b','i','u'];
     var in_img_tag=['img'];
     var in_link_tag=['a'];
+    var duplicatable_tag=['li','ul','ol','table','td','tr','dt','dd','dl'];
     
     var textarea_text_place = window.parent.document.getElementById("inner_text");
     var button_big_editor = window.parent.document.getElementById("big_editor");
@@ -58,6 +59,8 @@ function info_set( target ){
     var hidden_img_src = window.parent.document.getElementById("img_url");
     var link_text = window.parent.document.getElementById("link_text");
     var link_url = window.parent.document.getElementById("link_url");
+    var li_duplicater = window.parent.document.getElementById("duplicater");
+    var duplic_title = window.parent.document.getElementById("duplicate_title");
     
     textarea_text_place.disabled = true;
     textarea_text_place.value = ""; 
@@ -73,19 +76,34 @@ function info_set( target ){
     link_url.disabled=true;
     link_url.value="";
 
-    if(in_img_tag.includes(target.tagName.toLocaleLowerCase())){
+    li_duplicater.disabled =true;
+    var ttag=target.tagName.toLocaleLowerCase();
+    if(in_img_tag.includes(ttag)){
         label_img_name.innerHTML=target.getAttribute("src").substring(target.getAttribute("src").lastIndexOf("/")+1);
         hidden_img_src.value=target.getAttribute("src");
         button_img_change.disabled=false;
-    }else if(in_tex_tag.includes(target.tagName.toLocaleLowerCase())){
+    }else if(in_tex_tag.includes(ttag)){
         textarea_text_place.disabled = false;
         textarea_text_place.value = set_break(target.innerHTML);
         button_big_editor.disabled=false;
-    }else if(in_link_tag.includes(target.tagName.toLocaleLowerCase())){
+    }else if(in_link_tag.includes(ttag)){
         link_text.disabled = false;
         link_text.value = target.innerHTML;
         link_url.disabled=false;
         link_url.value=target.getAttribute("href");
+    }
+    if(duplicatable_tag.includes(ttag)){
+        li_duplicater.disabled = false;
+       var title="" 
+       
+       if(duplicatable_tag.slice(0,3).includes(ttag)){
+            title="リスト要素 'li' 追加"
+        }else if(duplicatable_tag.slice(3,6).includes(ttag)){
+            title="テーブル行 'tr'追加"
+        }else if(duplicatable_tag.slice(6).includes(ttag)){
+            title="記述型リスト 'dl・dt・dd'要素追加 "
+        }
+        duplic_title.innerHTML =title
     }
 }
 

@@ -13,7 +13,8 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <link href="css/common.css" type="text/css" charset="utf-8" rel="stylesheet"/>
-        <link href="css/page_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
+        <link
+            href="css/page_editor_main.css" type="text/css" charset="utf-8" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/page_editor_jq.js"></script>
         <script type="text/javascript" src="js/page_editor_prop.js" defer="defer"></script>
@@ -66,7 +67,10 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                         <input type='button' id='img_url' value="a" style=" display: none;">
 
                     </div>
-                    <div class="puroperty"></div>
+                    <div class="puroperty">
+                        <h4 id="duplicate_title">テーブル行"tr"複製</h4>
+                        <input type='button' id='duplicater' value="要素複製" disabled="disabled" onClick="duplicater()">
+                    </div>
                 </div>
                 <div id="page_view">
                     <iframe id="htmlframe" src="<?php echo $htmlpath."?".date("YmdHis"); ?>"></iframe>
@@ -78,8 +82,8 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                         onclick="save_close()"><img src="img/save.svg" width="50px"></button>
                 </div>
             </div>
-            <div id="dialog">
-                <form id="dialog_form" name="dialog">
+            <div id="a_dialog" class="dialog">
+                <form class="dialog_form" name="dialog">
                     <div id="set_proper">
                         <div id="set_alt">
                             <p>alt属性（代替テキスト）の設定</p>

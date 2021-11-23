@@ -36,7 +36,7 @@ function img_selector_open() {
             var o_iframe = document.getElementById('htmlframe');
             var id = document.getElementById('targeted_id').value;
             var target = o_iframe.contentWindow.document.getElementById(id);
-            document.getElementById("dialog").style.display="inline-block";
+            document.getElementById("a_dialog").style.display="inline-block";
             
             var base = document.getElementById("abs_path").value;
             document.getElementById("alt_input").value=target.getAttribute("alt");
@@ -69,7 +69,7 @@ function call_change_html_from_dialog(){
     var new_a_path=document.getElementById(targetval).value || document.getElementById(targetval).innerHTML;
     }catch{}
     
-    document.getElementById("dialog").style.display="none";
+    document.getElementById("a_dialog").style.display="none";
     change_html(type,new_alt,img_path,new_a_path);
 }
 

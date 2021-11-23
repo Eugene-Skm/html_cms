@@ -68,7 +68,7 @@ main {
     height: 100px;
     resize: none;
 }
-#dialog {
+.dialog {
     position: absolute;
     display: none;
     width: 100%;
@@ -81,7 +81,7 @@ main {
     display: none;
     flex-direction: column;
 }
-#dialog_form {
+.dialog_form {
     position: absolute;
     display: inline-flex;
     flex-direction: column;
@@ -95,7 +95,7 @@ main {
     left: 50%;
     transform: translate(-50%,-50%);
 }
-#dialog_form .way{
+.dialog_form .way{
     display: inline-flex;
     flex-direction: row;
     margin: 2px;
