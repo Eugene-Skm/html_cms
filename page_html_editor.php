@@ -44,6 +44,10 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                         <input type="hidden" id="targeted_id" value="">
                         <input type="button" id="edit_inner_code" value="タグ内コード編集">
                     </div>
+                     <div class="puroperty">
+                        <h4 id="duplicate_title">選択要素削除</h4>
+                        <input type='button' id='remover' value="要素削除" disabled="disabled" onClick="remove_Ele()">
+                    </div>
                     <hr>
                     <div class="puroperty">
                         <h4>内部テキスト</h4>
@@ -69,7 +73,11 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                     </div>
                     <div class="puroperty">
                         <h4 id="duplicate_title">テーブル行"tr"複製</h4>
-                        <input type='button' id='duplicater' value="要素複製" disabled="disabled" onClick="duplicater()">
+                        <input type='button' id='duplicater' value="要素複製" disabled="disabled" onClick="duplicate_dialog_open('d')">
+                    </div>
+                    <div class="puroperty">
+                        <h4 id="sorter_title">テーブル行"tr"前後入替</h4>
+                        <input type='button' id='sorter' value="要素入替" disabled="disabled" onClick="duplicate_dialog_open('s')">
                     </div>
                 </div>
                 <div id="page_view">
@@ -108,6 +116,30 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
                         <input type="hidden" value="" id="rl_path">
                     </div>
                     <input type="button" value="確定" onclick="call_change_html_from_dialog()">
+                </form>
+            </div>
+            <div id="d_dialog" class="dialog">
+                <form class="dialog_form" name="dialog">
+                    <div id="d_setting">
+                        <p><p class="d_tagname">tr</p><p id="pattern_title">複製設定</p></p>
+                        <p id="instruction">複製元と複製先の設定をしてください</p>
+                        <div class="origin">
+                            <p>複製元</p>
+                            <select id="d_origin">
+                            </select>
+                        </div>
+                        <div class="set">
+                            <p>複製先</p>
+                            <select id="d_set">
+                            </select>
+                            <select id="beforeafter">
+                                <option value="b">前</option>
+                                <option value="a">後ろ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="duplicatepattern" value="">
+                    <input type="button" value="確定" onclick="duplicator_sorter()">
                 </form>
             </div>
         </main>

@@ -7,8 +7,6 @@ if ( isset( $_GET[ 'pattern' ] ) ) {
 }
 $fgets=new file_io("./data/profile.csv");
 $imglist= $fgets->get_type_of_file_path("img");
-//$svglist = array_filter( glob( "./SVG/*" ), 'is_file' );
-//$imglist = array_filter( glob( "./img/*" ), 'is_file' );
 $current_fpath="";
 ?>
 

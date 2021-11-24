@@ -50,7 +50,7 @@ function info_set( target ){
     var in_tex_tag=['p','li','td','h1','h2','h3','h4','h5','address','dd','dt','span','strong','b','i','u'];
     var in_img_tag=['img'];
     var in_link_tag=['a'];
-    var duplicatable_tag=['li','ul','ol','table','td','tr','dt','dd','dl'];
+    var duplicatable_tag=['li','ul','ol','table','td','tr','dt','dd'];
     
     var textarea_text_place = window.parent.document.getElementById("inner_text");
     var button_big_editor = window.parent.document.getElementById("big_editor");
@@ -61,6 +61,9 @@ function info_set( target ){
     var link_url = window.parent.document.getElementById("link_url");
     var li_duplicater = window.parent.document.getElementById("duplicater");
     var duplic_title = window.parent.document.getElementById("duplicate_title");
+    var sorter_title = window.parent.document.getElementById("sorter_title");
+    var sorter = window.parent.document.getElementById("sorter");
+    var remover = window.parent.document.getElementById("remover");
     
     textarea_text_place.disabled = true;
     textarea_text_place.value = ""; 
@@ -75,8 +78,11 @@ function info_set( target ){
     link_text.value = "";
     link_url.disabled=true;
     link_url.value="";
-
+    
     li_duplicater.disabled =true;
+    sorter.disabled=true;
+    remover.disabled=false;
+    
     var ttag=target.tagName.toLocaleLowerCase();
     if(in_img_tag.includes(ttag)){
         label_img_name.innerHTML=target.getAttribute("src").substring(target.getAttribute("src").lastIndexOf("/")+1);
@@ -94,16 +100,18 @@ function info_set( target ){
     }
     if(duplicatable_tag.includes(ttag)){
         li_duplicater.disabled = false;
+        sorter.disabled = false;
        var title="" 
        
        if(duplicatable_tag.slice(0,3).includes(ttag)){
-            title="リスト要素 'li' 追加"
+            title="リスト要素 'li' "
         }else if(duplicatable_tag.slice(3,6).includes(ttag)){
-            title="テーブル行 'tr'追加"
+            title="テーブル行 'tr' "
         }else if(duplicatable_tag.slice(6).includes(ttag)){
-            title="記述型リスト 'dl・dt・dd'要素追加 "
+            title="記述型リスト 'dt・dd' "
         }
-        duplic_title.innerHTML =title
+        duplic_title.innerHTML =title+" 要素追加";
+        sorter_title.innerHTML=title+ " 入替"
     }
 }
 
