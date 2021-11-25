@@ -99,10 +99,7 @@ function info_set( target ){
         link_url.value=target.getAttribute("href");
     }
     if(duplicatable_tag.includes(ttag)){
-        li_duplicater.disabled = false;
-        sorter.disabled = false;
-       var title="" 
-       
+        var title="" 
        if(duplicatable_tag.slice(0,3).includes(ttag)){
             title="リスト要素 'li' "
         }else if(duplicatable_tag.slice(3,6).includes(ttag)){
@@ -110,8 +107,14 @@ function info_set( target ){
         }else if(duplicatable_tag.slice(6).includes(ttag)){
             title="記述型リスト 'dt・dd' "
         }
+        
+        li_duplicater.disabled = false;
         duplic_title.innerHTML =title+" 要素追加";
-        sorter_title.innerHTML=title+ " 入替"
+        if(ttag != "dd" && ttag != "dt"){
+            sorter.disabled = false;    
+            sorter_title.innerHTML=title+ " 入替"
+        }
+        
     }
 }
 

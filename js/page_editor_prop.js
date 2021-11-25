@@ -90,6 +90,7 @@ function duplicate_dialog_open(pattern) {
     document.getElementById("pattern_title").innerHTML = title;
     document.getElementById("instruction").innerHTML = instruction;
     document.getElementById("duplicatepattern").value = pattern;
+        document.getElementById("beforeafter").style.display="inline-block";
 
     if (table.includes(ttagname)) {
         thistag = "tr";
@@ -126,11 +127,12 @@ function duplicate_dialog_open(pattern) {
             $('#d_set').append('<option value=' + o + '>' + o + '番目\t' + thistag + '\t要素</option>')
         };
     } else if (def_list.includes(ttagname)) {
-
+        
         $('#d_origin').append('<option value="selected">選択\t' + thistag + '\t項目</option>')
         if (ttagname == "dd") {
             $('#d_set').append('<option value="selected_next">選択' + thistag + '\t要素</option>')
         } else if (ttagname == "dt") {
+            document.getElementById("beforeafter").style.display="none";
             $('#d_set').append('<option value="selected_first">親要素最前部</option>')
             $('#d_set').append('<option value="selected_last">親要素最後部</option>')
         }
@@ -222,7 +224,24 @@ function duplicator_sorter(pattern) {
             contentarea.children[document.getElementById("d_set").value - 1].after(clonebase);
         }
     } else if (def_list.includes(ttagname)) {
-
+        if(ttagname=="dd"){
+            contentarea = o_iframe.contentWindow.document.getElementById(id)
+            clonebase = contentarea.cloneNode(true);
+            if (document.getElementById("beforeafter").value == "b") {
+                contentarea.before(clonebase);
+            } else {
+                contentarea.after(clonebase);
+            }
+        }else if(ttagname=="dt"){
+            contentarea = o_iframe.contentWindow.document.getElementById(id).parentElement;
+            clonebase = o_iframe.contentWindow.document.getElementById(id).cloneNode(true);
+            var clonebase2= o_iframe.contentWindow.document.getElementById(id).nextSibling.cloneNode(true)
+            if (document.getElementById("d_set").value == "selected_first") {
+                contentarea.firstChild.before(clonebase);
+            } else {
+                contentarea.lastChild.after(clonebase);
+            }
+        }
     }
 
     document.getElementById("d_dialog").style.display = "none";
