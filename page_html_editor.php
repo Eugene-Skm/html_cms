@@ -33,15 +33,21 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
     <div id="editor_panel">
         <div id="property_panel">
             <div class="puroperty">
-                <h3>HTML名</h3>
+                <h3>HTMLページデータ</h3>
                 <div class="property_content">
+                    
+                    <p class="w30">ファイル名</p>
                     <p class="w70" id="htmlt"><?php echo basename($htmlpath); ?></p>
                     <input type="hidden" value="<?php echo realpath($htmlpath); ?>" id="abs_path">
-                    <input type="button" class="w30" id="edit_html_code" value="HTML編集">
+                    <!--<input type="button" class="w30" id="edit_html_code" value="HTML編集">-->
+                </div>
+                <div class="property_content">
+                    <p class="w30">タイトル</p>
+                    <input type="text" class="w70" id="pagetitle" >
                 </div>
             </div>
             <div class="puroperty">
-                <h4>タグ名</h4>
+                <h4>選択タグ名</h4>
                 <div class="property_content">
                     <p class="w70" id="targeted_tag"><?php echo basename($htmlpath); ?></p>
                     <input type="hidden" id="targeted_id" value="">
@@ -59,11 +65,11 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
             <div class="puroperty">
                 <h4>リンク</h4>
                 <div class="property_content">
-                    <p class="w30">リンクテキスト</p>
+                    <p class="w30">テキスト</p>
                     <input type="text" class="w70" id="link_text" disabled="disabled">
                 </div>
                 <div class="property_content">
-                    <p class="w30">リンクURL</p>
+                    <p class="w30">URL</p>
                     <input type="text" class="w70" id="link_url" disabled="disabled">
                 </div>
             </div>
@@ -88,15 +94,32 @@ if ( isset( $_GET[ "htmlnm" ] ) ) {
             </div>
         </div>
         <div id="page_view">
-            <iframe id="htmlframe" src="<?php echo $htmlpath."?".date("YmdHis"); ?>"></iframe>
+            <div id="toolbar">
+                <div id="bar_upper">
+                    <div id="tabplace"><p id="title_tab"></p></div>
+                    <div id="browser_button">
+                        <div class="button">ー</div>
+                        <div class="button">□</div>
+                        <div class="button">×</div>
+                    </div>
+                </div>
+                <div id="bar_bottom">
+                    <div id="transition_buttons">
+                        <div class="button"><b>←</b></div>
+                        <div class="button"><b>→</b></div>
+                        
+                    </div>
+                    <div id="url_bar"><p><?php echo $htmlpath; ?></p></div>
+                </div>
+            </div>
+            <iframe id="htmlframe" src="<?php echo $htmlpath."?".date("YmdHis"); ?>" frameborder="0"></iframe>
         </div>
         <div id="functional_Buttons">
-            <button
-                        id="save"
-                        style='display: inline-block; width:"100px";'
-                        onclick="save_close()"><img src="img/save.svg" width="50px"></button>
+            <button id="save" style='display: inline-block; width:"100px";' onclick="save_close()"><img src="img/save.svg" width="50px"></button>
         </div>
     </div>
+    
+    <!--*******************************ダイアログ*******************************-->
     <div id="a_dialog" class="dialog">
         <form class="dialog_form" name="dialog">
             <div id="set_proper">

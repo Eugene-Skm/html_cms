@@ -23,9 +23,23 @@ setTimeout(function () {
         var place = document.getElementById('targeted_id');
         place.src = content;
     });
+    document.getElementById('pagetitle').addEventListener('input', function () {
+        var content = document.getElementById('pagetitle').value;
+        var o_iframe = document.getElementById('htmlframe');
+        var place = o_iframe.contentWindow.document;
+        place.title = content;
+        
+        var pgtitle_tab = document.getElementById("title_tab");
+        pgtitle_tab.innerHTML=content;
+        
+    });
 
+   
+    
+    
 
 }, 20);
+
 
 function remove_Ele() {
     var id = document.getElementById('targeted_id').value;
@@ -287,7 +301,6 @@ function change_html(type, cont, cont2 = null, cont3 = null) {
     } else if (type == "link_url") {
         target.href = cont;
     }
-
 }
 
 function change_paretnt_a(obj_path) {

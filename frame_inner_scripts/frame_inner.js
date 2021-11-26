@@ -34,6 +34,11 @@ setTimeout(function () { //iframe内 load待ち対策
             event.target.classList.remove("hovered");
         }, true);
     };
+    var pgtitle = window.parent.document.getElementById("pagetitle");
+    var pgtitle_tab = window.parent.document.getElementById("title_tab");
+    pgtitle.value = document.title;
+    pgtitle_tab.innerHTML=document.title;
+    
     loaded();
 }, 10);
 
@@ -64,6 +69,7 @@ function info_set( target ){
     var sorter_title = window.parent.document.getElementById("sorter_title");
     var sorter = window.parent.document.getElementById("sorter");
     var remover = window.parent.document.getElementById("remover");
+
     
     textarea_text_place.disabled = true;
     textarea_text_place.value = ""; 
