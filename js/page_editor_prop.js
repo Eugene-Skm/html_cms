@@ -34,10 +34,6 @@ setTimeout(function () {
         
     });
 
-   
-    
-    
-
 }, 20);
 
 
@@ -72,7 +68,6 @@ function img_selector_open() {
                 document.getElementById("nowurl").innerHTML = target.parentElement.getAttribute('href');
                 document.getElementById("newimgurl").innerHTML = rl_cont_path;
             }
-
         }
     };
 }
@@ -104,7 +99,7 @@ function duplicate_dialog_open(pattern) {
     document.getElementById("pattern_title").innerHTML = title;
     document.getElementById("instruction").innerHTML = instruction;
     document.getElementById("duplicatepattern").value = pattern;
-        document.getElementById("beforeafter").style.display="inline-block";
+    document.getElementById("beforeafter").style.display="inline-block";
 
     if (table.includes(ttagname)) {
         thistag = "tr";

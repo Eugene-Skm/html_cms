@@ -2,8 +2,8 @@
 $(function () {
     $('#htmlframe').on('load', function () {
         $('#htmlframe').contents().find('head').append('<link class="temporary_script" rel="stylesheet" href="../frame_inner_scripts/frame_inner.css">');
-        $('#htmlframe').contents().find('head').append('<script class="temporary_script" src="//code.jquery.com/jquery-1.11.1.min.js"></script>');
-        $('#htmlframe').contents().find('head').append('<script class="temporary_script" src="../js/jquery-3.6.0.min.js></script>');
+       // $('#htmlframe').contents().find('head').append('<script class="temporary_script" src="//code.jquery.com/jquery-1.11.1.min.js"></script>');
+       // $('#htmlframe').contents().find('head').append('<script class="temporary_script" src="../js/jquery-3.6.0.min.js></script>');
         set_js();
     });
 });

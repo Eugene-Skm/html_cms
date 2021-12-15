@@ -2,6 +2,7 @@
 include("./class_file_io.php");
 $fgets=new file_io("./data/profile.csv");
 $htmllist= $fgets->get_type_of_file_path("html");
+$way = $_GET["way"];
 ?>
 <!doctype html>
 <html>
@@ -24,7 +25,7 @@ $htmllist= $fgets->get_type_of_file_path("html");
         <li>
             <div class="basic_name">
                 <?php echo basename($hl) ?> 
-                <a href="page_html_editor.php?htmlnm=<?php echo $hl ?>" ></a>
+                <a href="page_html_editor.php?htmlnm=<?php echo $hl ?>&way=<?php echo $way ?>" ></a>
             </div>
         </li>
         <?php } ?>
