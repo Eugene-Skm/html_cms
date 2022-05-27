@@ -31,6 +31,28 @@ class file_io {
         return $flg;
     }
 
+    function dl(){
+        // ファイルのパス
+        //$filepath = 'bigimg.jpg';
+        
+        // リネーム後のファイル名
+       // $filename = 'ダウンロード.jpg';
+        
+        // ファイルタイプを指定
+        header('Content-Type: application/force-download');
+        
+        // ファイルサイズを取得し、ダウンロードの進捗を表示
+        header('Content-Length: '.filesize($this->tmpfp));
+        
+        // ファイルのダウンロード、リネームを指示
+        //header('Content-Disposition: attachment;');
+        //header('Content-Disposition: attachment; filename="'.$filename.'"');
+        
+        // ファイルを読み込みダウンロードを実行
+        $flg= readfile($this->tmpfp);
+
+        return $flg;
+    }
     function write_content( $contents ) {
         $contents = mb_convert_encoding( $contents, "UTF-8" );
         $filename = $this->tmpfp;

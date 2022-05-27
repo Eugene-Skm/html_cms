@@ -56,7 +56,7 @@ function bytes_to_hex_string(bytes)
 }
 
 // 16進文字列をバイト値に変換
-function	hex_to_byte		(hex_str)
+function hex_to_byte(hex_str)
 {
 	return parseInt(hex_str, 16);
 }

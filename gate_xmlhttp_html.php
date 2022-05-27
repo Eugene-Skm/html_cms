@@ -5,23 +5,21 @@ $htmlcode="";
 $cpage="";
 $psum="";
 	if(isset($_GET["cont"])){
-		$fname = $_GET["fname"];
-		$htmlcode =$_GET["cont"];
-		$cpage = $_GET["cpage"];
-		$psum = $_GET["psum"];
+		$fname = $_GET["fname"];   //URL パラメータ内　ファイル名
+		$htmlcode =$_GET["cont"];  //URL パラメータ内　HTMLコンテンツ
+		$cpage = $_GET["cpage"];   //URL パラメータ内　現在ページ
+		$psum = $_GET["psum"];     //URL パラメータ内　ページ総数
 	}
 	$path_parts = pathinfo($fname);
 	$tmpfname = $psum."-".$cpage."-".$path_parts['filename'].".txt";
-	$hex =hex2bin($_GET["cont"]);
-	var_dump($_GET["cont"], $hex);
 	$filesio=new file_io($tmpfname);
-	$filesio->write_content($htmlcode);
-	if($cpage==$psum){
-		merge_call($fname, $psum);
+	$filesio->write_content($htmlcode); //コンテンツを一時的に保存
+
+	if($cpage==$psum){				//現在ページがページ総数と同一の場合
+		merge_call($fname, $psum);	//保存したファイル全てをマージ
 	}
 
-function merge_call($fn,$p){
-	//$filesset=new file_io(str_replace($fn,"html",".text"));
+function merge_call($fn,$p){ //分割保存されているコンテンツ内容結合処理
 	$path_parts = pathinfo($fn);
 	$fnames=[];
 	for($r=1; $r<=$p; $r++){
