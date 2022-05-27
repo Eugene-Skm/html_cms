@@ -60,6 +60,8 @@ function img_selector_open() {
 
             var base = document.getElementById("abs_path").value;
             document.getElementById("alt_input").value = target.getAttribute("alt");
+            
+            console.log(base, targetpath);
             rl_cont_path = path_calclater(base, targetpath);
             document.getElementById("rl_path").value = rl_cont_path;
             console.log(rl_cont_path);
@@ -325,25 +327,23 @@ function save_close() {
     }
 
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-    var targettext = innerDoc.body.parentElement.innerHTML;
+    var targettext = innerDoc.body.parentElement.innerHTML;　　//html 内容の取得
     targettext = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html>\n' + targettext + '\n</html>';
-    const hex_targettext_array = string_to_utf8_hex_string(targettext).match(/.{1,1000}/g);
+    const hex_targettext_array = string_to_utf8_hex_string(targettext).match(/.{1,1000}/g); //16進数化と1000文字分割
     callxmlhttp(hex_targettext_array, f_name);
 }
 
-function callxmlhttp(contents, fn) {
+function callxmlhttp(contents, fn) {　//XMLHTTM
     var pagecount = contents.length;
     for (var u = 0; u < contents.length; u++) {
         var currentpage = u + 1;
-
         var statement = "fname=" + fn + "&cont=" + contents[u] + "&cpage=" + currentpage + "&psum=" + pagecount;
-
         html_xmlhttp_gate(statement)
     }
-    window.location.href = './page_html_list.php';
+    window.location.href = './page_html_list.php?way=view';
 }
 
-function html_xmlhttp_gate(sttext) {
+function html_xmlhttp_gate(sttext) {　//実際のXMLHTTPGATE通信実行部分
     var request = new XMLHttpRequest();
     request.open('GET', "./gate_xmlhttp_html.php?" + sttext, true);
     request.responseType = '';

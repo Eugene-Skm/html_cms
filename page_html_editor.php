@@ -2,7 +2,6 @@
 $htmlpath = "";
 if ( isset( $_GET[ "htmlnm" ] ) ) {
     $htmlpath = $_GET[ "htmlnm" ];
-
 }
 ?>
 

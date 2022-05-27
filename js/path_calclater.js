@@ -15,7 +15,11 @@ function path_calclater(base_path,target_path){
     console.log(base_home_path,target_home_path);
     
     var slashcount = ( base_home_path.match( /\\/g ) || [] ).length;
+    console.log(target_home_path.charAt( 0 ))
+    console.log(target_home_path.charAt( 0 ).match( /\\/g ))
+    if(target_home_path.charAt( 0 ).match( /\\/g )){
         target_home_path=target_home_path.slice(1);
+    }
         var prep_url="";
         var uping ="..\\";
     console.log(slashcount);
@@ -25,5 +29,7 @@ function path_calclater(base_path,target_path){
     
     var relative_path = prep_url + target_home_path;
     
+    console.log(relative_path)
+
     return relative_path.replaceAll(/\\/g,"/") ;
 }

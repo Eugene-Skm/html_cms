@@ -27,13 +27,7 @@ if(!file_exists('./data/profile.csv')){
                 <p>HTMLビューエディタ</p>
             </div>
         </li>
-        <li>
-            <div class="basic_name">
-                <a href="page_html_list.php?way=code"></a>
-                <img src="SVG/editor.svg">
-                <p>HTMLコードエディタ</p>
-            </div>
-        </li>
+        
         <li>
             <div class="basic_name">
                 <a href="page_img_list.php?pattern=img_edit"></a>
@@ -43,25 +37,33 @@ if(!file_exists('./data/profile.csv')){
         </li>
         <li>
             <div class="basic_name">
-                <a href="page_img_list.php?pattern=img_edit"></a>
-                <img src="SVG/filemanagement.svg">
-                <p>ファイル管理</p>
+                <!--<a href="page_html_list.php?way=code"></a>-->
+                <img src="SVG/editor.svg">
+                <p>HTMLコードエディタ(未実装)</p>
             </div>
         </li>
         <li>
             <div class="basic_name">
+               <!-- <a href="page_img_list.php?pattern=img_edit"></a>-->
+                <img src="SVG/filemanagement.svg">
+                <p>ファイル管理(未実装)</p>
+            </div>
+        </li>
+        <!--
+        <li>
+            <div class="basic_name">
                 <a href="page_html_list.php"></a>
                 <img src="SVG/upload.svg">
-                <p>アップロード</p>
+                <p>アップロード(未実装)</p>
             </div>
         </li>
         <li>
             <div class="basic_name">
                 <a href="page_html_list.php"></a>
                 <img src="SVG/download.svg">
-                <p>ダウンロード</p>
+                <p>ダウンロード(未実装)</p>
             </div>
-        </li>
+        </li>-->
         <li>
             <div class="basic_name">
                 <a href="page_initialize.php"></a>
